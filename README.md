@@ -24,11 +24,6 @@ import React from "react";
 import useForm from "react-hook-form";
 import { HookFormInput } from "react-hook-form-input";
 import Select from "react-select";
-import React from "react";
-import ReactDOM from "react-dom";
-import useForm from "react-hook-form";
-import Select from "react-select";
-import HookFormInput from "./HookFormInput";
 
 const options = [
   { value: "chocolate", label: "Chocolate" },
