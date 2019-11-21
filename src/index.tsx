@@ -1,32 +1,44 @@
 import * as React from 'react';
 
 type Props = {
-  setValue: (name: string, value: any) => void;
+  setValue: (name: string, value: any, trigger: boolean) => void;
   register: (ref: any, rules: any) => void;
   name: string;
   input: any;
-  rules: any;
+  rules?: any;
+  onChange?: (value: any) => void;
+  trigger?: boolean;
 };
 
-const HookFormInput = (props: Props) => {
-  const [value, setValue] = React.useState();
+const HookFormInput = ({
+  setValue,
+  name,
+  register,
+  rules,
+  trigger,
+  input,
+  onChange,
+  ...rest
+}: Props) => {
+  const [value, setInputValue] = React.useState();
   const valueRef = React.useRef();
   const handleChange = (value: any) => {
-    props.setValue(props.name, value);
+    setValue(name, value, trigger);
     valueRef.current = value;
+    if (onChange) onChange(value);
   };
 
   React.useEffect(() => {
-    props.register(
+    register(
       Object.defineProperty(
         {
-          name: props.name,
+          name: name,
           type: 'custom',
         },
         'value',
         {
           set(value) {
-            setValue(value);
+            setInputValue(value);
             valueRef.current = value;
           },
           get() {
@@ -34,12 +46,12 @@ const HookFormInput = (props: Props) => {
           },
         },
       ),
-      { ...props.rules },
+      { ...rules },
     );
-  }, [props, value]);
+  }, [register, value]);
 
-  return React.createElement(props.input, {
-    ...props,
+  return React.createElement(input, {
+    ...rest,
     onChange: handleChange,
     value,
   });

@@ -26,9 +26,9 @@ import { HookFormInput } from "react-hook-form-input";
 import Select from "react-select";
 
 const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" }
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' },
 ];
 
 function App() {
@@ -63,6 +63,18 @@ function App() {
 
 ```
 
+## API
+
+| Prop       | Type      | Required | Description                                                     |
+| :--------- | :-------- | :------: | :-------------------------------------------------------------- |
+| `input`    | Component |    ✓     | Component reference eg: `Select` from `react-select`            |
+| `setValue` | Function  |    ✓     | React Hook Form setValue function                               |
+| `register` | Function  |    ✓     | React Hook Form register function                               |
+| `name`     | string    |    ✓     | Unique name for React Hook Form to register the input           |
+| `trigger`  | boolean   |          | Should trigger validation                                       |
+| `rules`    | Object    |          | Validation rules according to register at React Hook Form       |
+| `...rest`  | Object    |          | any props assigned will be pass through to your Input component |
+
 ## Contributors
 
 Thanks goes to these wonderful people. [[Become a contributor](CONTRIBUTING.md)].
@@ -78,4 +90,3 @@ Thank goes to all our backers! [[Become a backer](https://opencollective.com/rea
 <a href="https://opencollective.com/react-hook-form#backers">
     <img src="https://opencollective.com/react-hook-form/backers.svg?width=950" />
 </a>
-
