@@ -43,5 +43,4 @@ const HookFormInput = (props: Props) => {
   });
 };
 
-
-export { HookFormInput }
+export { HookFormInput };

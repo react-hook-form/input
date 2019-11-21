@@ -8,12 +8,13 @@
   "license": "MIT",
   "types": "dist/index.d.ts",
   "scripts": {
+    "clean": "rm -rf dist",
     "build": "rollup -c",
     "prettier": "prettier --write './src/**/*.ts' './src/**/*.tsx' --config ./.prettierrc",
     "lint": "yarn lint:check --fix && yarn prettier",
-    "lint:check": "eslint ./src --ext .jsx,.ts --ignore-pattern *.test.ts --report-unused-disable-directives",
+    "lint:check": "eslint ./src --ext .tsx,.ts --ignore-pattern *.test.ts --report-unused-disable-directives",
     "postrelease": "yarn publish && git push --follow-tags",
-    "prepublishOnly": "yarn lint && yarn test && yarn run clean && yarn build"
+    "prepublishOnly": "yarn lint && yarn run clean && yarn build"
   },
   "devDependencies": {
     "@testing-library/react": "^9.3.2",
