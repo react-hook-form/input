@@ -4,6 +4,7 @@ type Props = {
   setValue: (name: string, value: any) => void;
   register: (ref: any) => void;
   name: string;
+  children: any;
 };
 
 const HookFormInput = (props: Props) => {

@@ -15,7 +15,7 @@ export function getConfig({
   ],
 } = {}) {
   return {
-    input: 'src/index.ts',
+    input: 'src/index.tsx',
     external: ['react', 'react-dom'],
     plugins: [
       typescript({

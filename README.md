@@ -8,6 +8,50 @@
 
 <p align="center">Performant, flexible and extensible forms with easy to use for validation.</p>
 
+## Quickstart
+
+```jsx
+import React from "react";
+import useForm from "react-hook-form";
+import Select from "react-select";
+import HookFormInput from "./HookFormInput";
+
+const options = [
+  { value: "chocolate", label: "Chocolate" },
+  { value: "strawberry", label: "Strawberry" },
+  { value: "vanilla", label: "Vanilla" }
+];
+
+function App() {
+  const methods = useForm();
+  const { handleSubmit, register, setValue, Reset } = methods;
+
+  return (
+    <form onSubmit={handleSubmit(e => console.log(e))}>
+      <input name="test" ref={register} />
+      <HookFormInput
+        children={Select}
+        options={options}
+        name="ReactSelect"
+        {...methods}
+      />
+      <button
+        type="button"
+        onClick={() => {
+          setValue("ReactSelect", "");
+        }}
+      >
+        Reset React-Select
+      </button>
+      <button type="button" onClick={() => {
+          setValue("ReactSelect", "");
+        }}>Reset</button>
+      <button>submit</button>
+    </form>
+  );
+}
+```
+
 ## Contributors
 
 Thanks goes to these wonderful people. [[Become a contributor](CONTRIBUTING.md)].
