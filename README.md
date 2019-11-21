@@ -24,6 +24,11 @@ import React from "react";
 import useForm from "react-hook-form";
 import { HookFormInput } from "react-hook-form-input";
 import Select from "react-select";
+import React from "react";
+import ReactDOM from "react-dom";
+import useForm from "react-hook-form";
+import Select from "react-select";
+import HookFormInput from "./HookFormInput";
 
 const options = [
   { value: "chocolate", label: "Chocolate" },
@@ -33,7 +38,7 @@ const options = [
 
 function App() {
   const methods = useForm();
-  const { handleSubmit, register, setValue, Reset } = methods;
+  const { handleSubmit, register, setValue, reset } = methods;
 
   return (
     <form onSubmit={handleSubmit(e => console.log(e))}>
@@ -42,24 +47,33 @@ function App() {
         input={Select}
         rules={{ required: true }}
         options={options}
-        name="ReactSelect"
+        name="test1"
         {...methods}
       />
       <button
         type="button"
         onClick={() => {
-          setValue("ReactSelect", "");
+          setValue("test1", "");
         }}
       >
-        Reset React-Select
+        Reset React Select
       </button>
-      <button type="button" onClick={() => {
-          setValue("ReactSelect", "");
-        }}>Reset</button>
+      <button
+        type="button"
+        onClick={() => {
+          reset({
+            test1: "",
+            test: ""
+          });
+        }}
+      >
+        Reset Form
+      </button>
       <button>submit</button>
     </form>
   );
 }
+
 ```
 
 ## Contributors
