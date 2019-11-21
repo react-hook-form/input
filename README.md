@@ -8,6 +8,8 @@
 
 <p align="center">Performant, flexible and extensible forms with easy to use for validation.</p>
 
+This wrapper component will make your life easier to work with Controlled components such as <a href="https://github.com/JedWatson/react-select">React-Select</a>, <a href="https://github.com/ant-design/ant-design">antd</a> and <a href="https://material-ui.com/">Material-UI</a>.
+
 ## Quickstart
 
 ```jsx
