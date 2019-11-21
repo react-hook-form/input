@@ -22,7 +22,7 @@ Inspiration and credit goes to <a href="https://github.com/JedWatson">Jed Watson
 ```jsx
 import React from "react";
 import useForm from "react-hook-form";
-import HookFormInput from "react-hook-form-input";
+import { HookFormInput } from "react-hook-form-input";
 import Select from "react-select";
 
 const options = [
