@@ -2,9 +2,10 @@ import * as React from 'react';
 
 type Props = {
   setValue: (name: string, value: any) => void;
-  register: (ref: any) => void;
+  register: (ref: any, rules: any) => void;
   name: string;
-  children: any;
+  input: any;
+  rules: any;
 };
 
 const HookFormInput = (props: Props) => {
@@ -33,10 +34,11 @@ const HookFormInput = (props: Props) => {
           },
         },
       ),
+      { ...props.rules },
     );
   }, [props, value]);
 
-  return React.createElement(props.children, {
+  return React.createElement(props.input, {
     ...props,
     onChange: handleChange,
     value,

@@ -37,7 +37,8 @@ function App() {
     <form onSubmit={handleSubmit(e => console.log(e))}>
       <input name="test" ref={register} />
       <HookFormInput
-        children={Select}
+        input={Select}
+        rules={{ required: true }}
         options={options}
         name="ReactSelect"
         {...methods}
