@@ -17,6 +17,9 @@ Inspiration and credit goes to <a href="https://github.com/JedWatson">Jed Watson
 
     $ npm install react-hook-form-input
 
+## Demo
+Check out this <a href="https://codesandbox.io/s/react-hook-form-hookforminput-rzu9s">demo</a>.
+
 ## Quickstart
 
 ```jsx
