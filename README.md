@@ -11,6 +11,10 @@
 ## Why?
 React Hook Form embrace uncontrolled components and native inputs, however it's hard to avoid working with external controlled component. This wrapper component will make your life easier to work with Controlled components such as <a href="https://github.com/JedWatson/react-select">React-Select</a>, <a href="https://github.com/ant-design/ant-design">antd</a> and <a href="https://material-ui.com/">Material-UI</a>.
 
+## Install
+
+    $ npm install react-hook-form-input
+
 ## Quickstart
 
 ```jsx
