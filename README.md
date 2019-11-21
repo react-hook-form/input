@@ -48,14 +48,6 @@ function App() {
       <button
         type="button"
         onClick={() => {
-          setValue("test1", "");
-        }}
-      >
-        Reset React Select
-      </button>
-      <button
-        type="button"
-        onClick={() => {
           reset({
             test1: "",
             test: ""
