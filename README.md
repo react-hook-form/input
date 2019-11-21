@@ -32,8 +32,7 @@ const options = [
 ];
 
 function App() {
-  const methods = useForm();
-  const { handleSubmit, register, setValue, reset } = methods;
+  const { handleSubmit, register, setValue, reset } = useForm();
 
   return (
     <form onSubmit={handleSubmit(e => console.log(e))}>
@@ -41,9 +40,10 @@ function App() {
       <HookFormInput
         input={Select}
         rules={{ required: true }}
-        options={options}
         name="test1"
-        {...methods}
+        register={register}
+        setValue={setValue}
+        options={options} // this is React-Select props
       />
       <button
         type="button"
