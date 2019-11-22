@@ -17,6 +17,7 @@
 Inspiration and credit goes to <a href="https://github.com/JedWatson">Jed Watson</a> @github <a href="https://github.com/JedWatson/react-select/issues/3855">issue #3855</a>.
 
 ## ✨ Features
+
 - isolate re-rendering at your component level
 - easily integrate with React Hook Form
 - tiny component
@@ -73,17 +74,17 @@ function App() {
 
 ## 📖 API
 
-| Prop        | Type      | Required | Description                                                                       |
-| :---------- | :-------- | :------: | :-------------------------------------------------------------------------------- |
-| `component` | Component |    ✓     | Component reference eg: `Select` from `react-select`                              |
-| `setValue`  | Function  |    ✓     | React Hook Form setValue function                                                 |
-| `register`  | Function  |    ✓     | React Hook Form register function                                                 |
-| `name`      | string    |    ✓     | Unique name for React Hook Form to register the input                             |
-| `trigger`   | boolean   |          | Should trigger validation                                                         |
-| `rules`     | Object    |          | Validation rules according to register at React Hook Form                         |
-| `type`      | string    |          | Currently support `checkbox` or `input` input type includes: `radio` and `select` |
-| `value`     | string    |          | value can be applied for checkbox                                                 |
-| `...rest`   | Object    |          | any props assigned will be pass through to your Input component                   |
+| Prop        | Type      | Required | Description                                                                                                      |
+| :---------- | :-------- | :------: | :--------------------------------------------------------------------------------------------------------------- |
+| `component` | Component |    ✓     | Component reference eg: `Select` from `react-select`                                                             |
+| `setValue`  | Function  |    ✓     | React Hook Form <a href="https://react-hook-form.com/api#setValue">setValue</a> function                         |
+| `register`  | Function  |    ✓     | React Hook Form <a href="https://react-hook-form.com/api#register">register</a> function                         |
+| `name`      | string    |    ✓     | Unique name for React Hook Form to register the input                                                            |
+| `trigger`   | boolean   |          | Should trigger validation                                                                                        |
+| `rules`     | Object    |          | Validation rules according to <a href="https://react-hook-form.com/api#register">register</a> at React Hook Form |
+| `type`      | string    |          | Currently support `checkbox` or `input` input type includes: `radio` and `select`                                |
+| `value`     | string    |          | value can be applied for `checkbox`                                                                              |
+| `...rest`   | Object    |          | any props assigned will be pass through to your Input component                                                  |
 
 ## Contributors
 
