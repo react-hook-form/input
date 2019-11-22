@@ -22,7 +22,7 @@ type ValidationOptions = Partial<{
 type Props = {
   setValue: (name: string, value: any, trigger?: boolean) => void;
   register: (ref: any, rules: ValidationOptions) => void;
-  unregister: (name: string) => void;
+  unregister?: (name: string) => void;
   name: string;
   component: React.ReactElement<any>;
   type?: string;

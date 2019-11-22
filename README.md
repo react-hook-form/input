@@ -82,7 +82,7 @@ function App() {
 | `rules`      | Object    |          | Validation rules according to <a href="https://react-hook-form.com/api#register">register</a> at React Hook Form                      |
 | `type`       | string    |          | Currently support `checkbox` or `input` input type includes: `radio` and `select`                                                     |
 | `value`      | string    |          | value can be applied for `checkbox`                                                                                                   |
-| `unregister` | Function  |    ✓     | React Hook Form <a href="https://react-hook-form.com/api#unregsiter">unregsiter</a> function (only apply when component will unmount) |
+| `unregister` | Function  |          | React Hook Form <a href="https://react-hook-form.com/api#unregsiter">unregsiter</a> function (only apply when component will unmount) |
 | `...rest`    | Object    |          | any props assigned will be pass through to your Input component                                                                       |
 
 ## Contributors
