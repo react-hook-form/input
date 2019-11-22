@@ -22,6 +22,7 @@ type ValidationOptions = Partial<{
 type Props = {
   setValue: (name: string, value: any, trigger?: boolean) => void;
   register: (ref: any, rules: ValidationOptions) => void;
+  unregister: (name: string) => void;
   name: string;
   component: React.ReactElement<any>;
   type?: string;
@@ -48,6 +49,7 @@ const HookFormInput = React.memo(
     onBlur,
     type,
     value,
+    unregister,
     ...rest
   }: Props) => {
     const isCheckbox = type === 'checkbox';
@@ -82,7 +84,7 @@ const HookFormInput = React.memo(
       register(
         Object.defineProperty(
           {
-            name: name,
+            name,
             type: 'custom',
           },
           'value',
@@ -98,6 +100,10 @@ const HookFormInput = React.memo(
         ),
         { ...rules },
       );
+
+      return () => {
+        if (unregister) unregister(name);
+      };
     }, [register, inputValue, name, rules]);
 
     return React.cloneElement(component, {
