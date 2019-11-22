@@ -56,6 +56,6 @@ describe('React Hook Form Input', () => {
       },
     });
 
-    expect(setValue).toBeCalledWith('test', 'test', undefined);
+    expect(setValue).toBeCalledWith('test', 'test', false);
   });
 });

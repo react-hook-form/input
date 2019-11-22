@@ -80,7 +80,7 @@ function App() {
 | `setValue`  | Function  |    ✓     | React Hook Form <a href="https://react-hook-form.com/api#setValue">setValue</a> function                         |
 | `register`  | Function  |    ✓     | React Hook Form <a href="https://react-hook-form.com/api#register">register</a> function                         |
 | `name`      | string    |    ✓     | Unique name for React Hook Form to register the input                                                            |
-| `trigger`   | boolean   |          | Should trigger validation                                                                                        |
+| `mode`      | string    |          | default to `onSubmit`                                                                                            |
 | `rules`     | Object    |          | Validation rules according to <a href="https://react-hook-form.com/api#register">register</a> at React Hook Form |
 | `type`      | string    |          | Currently support `checkbox` or `input` input type includes: `radio` and `select`                                |
 | `value`     | string    |          | value can be applied for `checkbox`                                                                              |

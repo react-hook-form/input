@@ -28,35 +28,52 @@ type Props = {
   rules?: ValidationOptions;
   value?: string | boolean;
   onChange?: (value: any) => void;
-  trigger?: boolean;
+  onBlur?: (value: any) => void;
+  mode?: 'onBlur' | 'onChange' | 'onSubmit';
 };
+
+function getValue(e: any, { isCheckbox }: { isCheckbox: boolean }) {
+  return e.target ? (isCheckbox ? e.target.checked : e.target.value) : e;
+}
 
 const HookFormInput = ({
   setValue,
   name,
   register,
   rules,
-  trigger,
+  mode = 'onSubmit',
   component,
   onChange,
+  onBlur,
   type,
   value,
   ...rest
 }: Props) => {
   const isCheckbox = type === 'checkbox';
+  const isOnChange = mode === 'onChange';
+  const isOnBlur = mode === 'onBlur';
   const [inputValue, setInputValue] = React.useState(isCheckbox ? false : '');
   const valueRef = React.useRef();
-  const handleChange = (e: any) => {
-    const data = e.target
-      ? isCheckbox
-        ? e.target.checked
-        : e.target.value
-      : e;
+  const commonTask = (e: any) => {
+    const data = getValue(e, { isCheckbox });
     setInputValue(data);
-    setValue(name, data, trigger);
     valueRef.current = data;
+    return data;
+  };
+
+  const handleChange = (e: any) => {
+    const data = commonTask(e);
+    setValue(name, data, isOnChange);
     if (onChange) {
       onChange(e);
+    }
+  };
+
+  const handleBlur = (e: any) => {
+    const data = commonTask(e);
+    setValue(name, data, isOnBlur);
+    if (onBlur) {
+      onBlur(e);
     }
   };
 
@@ -85,6 +102,7 @@ const HookFormInput = ({
   return React.cloneElement(component, {
     ...rest,
     onChange: handleChange,
+    ...(isOnBlur ? { onBlur: handleBlur } : {}),
     value: value || inputValue,
     ...(isCheckbox ? { checked: inputValue } : {}),
   });
