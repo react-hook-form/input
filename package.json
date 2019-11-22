@@ -1,6 +1,6 @@
 {
   "name": "react-hook-form-input",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Wrapper component for controlled inputs",
   "main": "dist/index.tsx",
   "repository": "git@github.com:react-hook-form/react-hook-form-input.git",
