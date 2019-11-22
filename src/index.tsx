@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 type Props = {
-  setValue: (name: string, value: any, trigger: boolean) => void;
+  setValue: (name: string, value: any, trigger?: boolean) => void;
   register: (ref: any, rules: any) => void;
   name: string;
-  input: any;
+  component: any;
   rules?: any;
   onChange?: (value: any) => void;
   trigger?: boolean;
@@ -16,16 +16,19 @@ const HookFormInput = ({
   register,
   rules,
   trigger,
-  input,
+  component,
   onChange,
   ...rest
 }: Props) => {
   const [value, setInputValue] = React.useState();
   const valueRef = React.useRef();
-  const handleChange = (value: any) => {
-    setValue(name, value, trigger);
-    valueRef.current = value;
-    if (onChange) onChange(value);
+  const handleChange = (e: any) => {
+    const data = e.target ? e.target.value || e.target.checked : e;
+    setValue(name, data, trigger);
+    valueRef.current = data;
+    if (onChange) {
+      onChange(data);
+    }
   };
 
   React.useEffect(() => {
@@ -48,9 +51,9 @@ const HookFormInput = ({
       ),
       { ...rules },
     );
-  }, [register, value]);
+  }, [register, value, name, rules]);
 
-  return React.createElement(input, {
+  return React.cloneElement(component, {
     ...rest,
     onChange: handleChange,
     value,
