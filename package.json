@@ -1,6 +1,6 @@
 {
   "name": "react-hook-form-input",
-  "version": "1.0.6",
+  "version": "1.0.5",
   "description": "Wrapper component for controlled inputs",
   "main": "dist/index.tsx",
   "repository": "git@github.com:react-hook-form/react-hook-form-input.git",
@@ -16,7 +16,7 @@
     "lint": "yarn lint:check --fix && yarn prettier",
     "lint:check": "eslint ./src --ext .tsx,.ts --ignore-pattern *.test.ts --report-unused-disable-directives",
     "postrelease": "yarn publish && git push --follow-tags",
-    "prepublishOnly": "yarn lint && yarn run clean && yarn build"
+    "prepublishOnly": "yarn lint && yarn test && yarn run clean && yarn build"
   },
   "devDependencies": {
     "@testing-library/react": "^9.3.2",
