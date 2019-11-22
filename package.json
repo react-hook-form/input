@@ -8,6 +8,8 @@
   "license": "MIT",
   "types": "dist/index.d.ts",
   "scripts": {
+    "test": "jest --runInBand",
+    "test:watch": "yarn test -- --watchAll",
     "clean": "rm -rf dist",
     "build": "rollup -c",
     "prettier": "prettier --write './src/**/*.ts' './src/**/*.tsx' --config ./.prettierrc",

@@ -23,10 +23,10 @@ type Props = {
   setValue: (name: string, value: any, trigger?: boolean) => void;
   register: (ref: any, rules: ValidationOptions) => void;
   name: string;
-  component: any;
+  component: React.ReactElement<any>;
   type?: string;
-  rules?: any;
-  value?: string;
+  rules?: ValidationOptions;
+  value?: string | boolean;
   onChange?: (value: any) => void;
   trigger?: boolean;
 };
