@@ -24,7 +24,9 @@ type Props = {
   register: (ref: any, rules: ValidationOptions) => void;
   name: string;
   component: any;
+  type?: string;
   rules?: any;
+  value?: string;
   onChange?: (value: any) => void;
   trigger?: boolean;
 };
@@ -37,16 +39,24 @@ const HookFormInput = ({
   trigger,
   component,
   onChange,
+  type,
+  value,
   ...rest
 }: Props) => {
-  const [value, setInputValue] = React.useState();
+  const isCheckbox = type === 'checkbox';
+  const [inputValue, setInputValue] = React.useState(isCheckbox ? false : '');
   const valueRef = React.useRef();
   const handleChange = (e: any) => {
-    const data = e.target ? e.target.value || e.target.checked : e;
+    const data = e.target
+      ? isCheckbox
+        ? e.target.checked
+        : e.target.value
+      : e;
+    setInputValue(data);
     setValue(name, data, trigger);
     valueRef.current = data;
     if (onChange) {
-      onChange(data);
+      onChange(e);
     }
   };
 
@@ -59,9 +69,9 @@ const HookFormInput = ({
         },
         'value',
         {
-          set(value) {
-            setInputValue(value);
-            valueRef.current = value;
+          set(data) {
+            setInputValue(data);
+            valueRef.current = data;
           },
           get() {
             return valueRef.current;
@@ -70,12 +80,13 @@ const HookFormInput = ({
       ),
       { ...rules },
     );
-  }, [register, value, name, rules]);
+  }, [register, inputValue, name, rules]);
 
   return React.cloneElement(component, {
     ...rest,
     onChange: handleChange,
-    value,
+    value: value || inputValue,
+    ...(isCheckbox ? { checked: inputValue } : {}),
   });
 };
 

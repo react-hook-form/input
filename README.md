@@ -11,6 +11,7 @@
 <p align="center">⚠️Still under construction. API may change as testing with more external components⚠️</p>
 
 ## 🤔 Why?
+
 React Hook Form embrace uncontrolled components and native inputs, however it's hard to avoid working with external controlled component. This wrapper component will make your life easier to work with Controlled components such as <a href="https://github.com/JedWatson/react-select">React-Select</a>, <a href="https://github.com/ant-design/ant-design">AntD</a> and <a href="https://material-ui.com/">Material-UI</a>.
 
 Inspiration and credit goes to <a href="https://github.com/JedWatson">Jed Watson</a> @github <a href="https://github.com/JedWatson/react-select/issues/3855">issue #3855</a>.
@@ -20,15 +21,16 @@ Inspiration and credit goes to <a href="https://github.com/JedWatson">Jed Watson
     $ npm install react-hook-form-input
 
 ## 🎪 Demo
+
 Check out this <a href="https://codesandbox.io/s/react-hook-form-hookforminput-rzu9s">demo</a>.
 
 ## 🎬 Quickstart
 
 ```jsx
-import React from "react";
-import useForm from "react-hook-form";
-import { HookFormInput } from "react-hook-form-input";
-import Select from "react-select";
+import React from 'react';
+import useForm from 'react-hook-form';
+import { HookFormInput } from 'react-hook-form-input';
+import Select from 'react-select';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -41,7 +43,6 @@ function App() {
 
   return (
     <form onSubmit={handleSubmit(e => console.log(e))}>
-      <input name="test" ref={register} />
       <HookFormInput
         input={Select}
         rules={{ required: true }}
@@ -54,8 +55,7 @@ function App() {
         type="button"
         onClick={() => {
           reset({
-            test1: "",
-            test: ""
+            test: '',
           });
         }}
       >
@@ -65,20 +65,21 @@ function App() {
     </form>
   );
 }
-
 ```
 
 ## 📖 API
 
-| Prop       | Type      | Required | Description                                                     |
-| :--------- | :-------- | :------: | :-------------------------------------------------------------- |
-| `input`    | Component |    ✓     | Component reference eg: `Select` from `react-select`            |
-| `setValue` | Function  |    ✓     | React Hook Form setValue function                               |
-| `register` | Function  |    ✓     | React Hook Form register function                               |
-| `name`     | string    |    ✓     | Unique name for React Hook Form to register the input           |
-| `trigger`  | boolean   |          | Should trigger validation                                       |
-| `rules`    | Object    |          | Validation rules according to register at React Hook Form       |
-| `...rest`  | Object    |          | any props assigned will be pass through to your Input component |
+| Prop        | Type      | Required | Description                                                                       |
+| :---------- | :-------- | :------: | :-------------------------------------------------------------------------------- |
+| `component` | Component |    ✓     | Component reference eg: `Select` from `react-select`                              |
+| `setValue`  | Function  |    ✓     | React Hook Form setValue function                                                 |
+| `register`  | Function  |    ✓     | React Hook Form register function                                                 |
+| `name`      | string    |    ✓     | Unique name for React Hook Form to register the input                             |
+| `trigger`   | boolean   |          | Should trigger validation                                                         |
+| `rules`     | Object    |          | Validation rules according to register at React Hook Form                         |
+| `type`      | string    |          | Currently support `checkbox` or `input` input type includes: `radio` and `select` |
+| `value`     | string    |          | value can be applied for checkbox                                                 |
+| `...rest`   | Object    |          | any props assigned will be pass through to your Input component                   |
 
 ## Contributors
 
