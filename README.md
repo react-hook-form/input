@@ -16,6 +16,11 @@
 
 Inspiration and credit goes to <a href="https://github.com/JedWatson">Jed Watson</a> @github <a href="https://github.com/JedWatson/react-select/issues/3855">issue #3855</a>.
 
+## ✨ Features
+- isolate re-rendering at your component level
+- easily integrate with React Hook Form
+- tiny component
+
 ## 📦 Install
 
     $ npm install react-hook-form-input
