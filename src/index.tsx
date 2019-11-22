@@ -36,76 +36,78 @@ function getValue(e: any, { isCheckbox }: { isCheckbox: boolean }) {
   return e.target ? (isCheckbox ? e.target.checked : e.target.value) : e;
 }
 
-const HookFormInput = ({
-  setValue,
-  name,
-  register,
-  rules,
-  mode = 'onSubmit',
-  component,
-  onChange,
-  onBlur,
-  type,
-  value,
-  ...rest
-}: Props) => {
-  const isCheckbox = type === 'checkbox';
-  const isOnChange = mode === 'onChange';
-  const isOnBlur = mode === 'onBlur';
-  const [inputValue, setInputValue] = React.useState(isCheckbox ? false : '');
-  const valueRef = React.useRef();
-  const commonTask = (e: any) => {
-    const data = getValue(e, { isCheckbox });
-    setInputValue(data);
-    valueRef.current = data;
-    return data;
-  };
+const HookFormInput = React.memo(
+  ({
+    setValue,
+    name,
+    register,
+    rules,
+    mode = 'onSubmit',
+    component,
+    onChange,
+    onBlur,
+    type,
+    value,
+    ...rest
+  }: Props) => {
+    const isCheckbox = type === 'checkbox';
+    const isOnChange = mode === 'onChange';
+    const isOnBlur = mode === 'onBlur';
+    const [inputValue, setInputValue] = React.useState(isCheckbox ? false : '');
+    const valueRef = React.useRef();
+    const commonTask = (e: any) => {
+      const data = getValue(e, { isCheckbox });
+      setInputValue(data);
+      valueRef.current = data;
+      return data;
+    };
 
-  const handleChange = (e: any) => {
-    const data = commonTask(e);
-    setValue(name, data, isOnChange);
-    if (onChange) {
-      onChange(e);
-    }
-  };
+    const handleChange = (e: any) => {
+      const data = commonTask(e);
+      setValue(name, data, isOnChange);
+      if (onChange) {
+        onChange(e);
+      }
+    };
 
-  const handleBlur = (e: any) => {
-    const data = commonTask(e);
-    setValue(name, data, isOnBlur);
-    if (onBlur) {
-      onBlur(e);
-    }
-  };
+    const handleBlur = (e: any) => {
+      const data = commonTask(e);
+      setValue(name, data, isOnBlur);
+      if (onBlur) {
+        onBlur(e);
+      }
+    };
 
-  React.useEffect(() => {
-    register(
-      Object.defineProperty(
-        {
-          name: name,
-          type: 'custom',
-        },
-        'value',
-        {
-          set(data) {
-            setInputValue(data);
-            valueRef.current = data;
+    React.useEffect(() => {
+      register(
+        Object.defineProperty(
+          {
+            name: name,
+            type: 'custom',
           },
-          get() {
-            return valueRef.current;
+          'value',
+          {
+            set(data) {
+              setInputValue(data);
+              valueRef.current = data;
+            },
+            get() {
+              return valueRef.current;
+            },
           },
-        },
-      ),
-      { ...rules },
-    );
-  }, [register, inputValue, name, rules]);
+        ),
+        { ...rules },
+      );
+    }, [register, inputValue, name, rules]);
 
-  return React.cloneElement(component, {
-    ...rest,
-    onChange: handleChange,
-    ...(isOnBlur ? { onBlur: handleBlur } : {}),
-    value: value || inputValue,
-    ...(isCheckbox ? { checked: inputValue } : {}),
-  });
-};
+    return React.cloneElement(component, {
+      ...rest,
+      onChange: handleChange,
+      ...(isOnBlur ? { onBlur: handleBlur } : {}),
+      value: value || inputValue,
+      ...(isCheckbox ? { checked: inputValue } : {}),
+    });
+  },
+);
 
 export { HookFormInput };
