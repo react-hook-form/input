@@ -1,5 +1,6 @@
 example/
 .circleci/
+.DS_Store
 src/
 test/
 .babelrc
