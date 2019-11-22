@@ -44,12 +44,11 @@ function App() {
   return (
     <form onSubmit={handleSubmit(e => console.log(e))}>
       <HookFormInput
-        input={Select}
+        component={<Select options={options} />}
         rules={{ required: true }}
         name="test1"
         register={register}
         setValue={setValue}
-        options={options} // this is React-Select props
       />
       <button
         type="button"
