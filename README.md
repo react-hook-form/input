@@ -48,11 +48,11 @@ function App() {
   const { handleSubmit, register, setValue, reset } = useForm();
 
   return (
-    <form onSubmit={handleSubmit(e => console.log(e))}>
+    <form onSubmit={handleSubmit(data => console.log(data))}>
       <HookFormInput
         component={<Select options={options} />}
         rules={{ required: true }}
-        name="test1"
+        name="reactSelect"
         register={register}
         setValue={setValue}
       />
@@ -60,7 +60,7 @@ function App() {
         type="button"
         onClick={() => {
           reset({
-            test: '',
+            reactSelect: '',
           });
         }}
       >
