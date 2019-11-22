@@ -27,7 +27,6 @@
     "@typescript-eslint/parser": "^2.7.0",
     "bundlesize": "^0.18.0",
     "coveralls": "^3.0.3",
-    "cypress": "^3.6.1",
     "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-react-hooks": "^2.2.0",
