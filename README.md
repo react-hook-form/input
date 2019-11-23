@@ -8,6 +8,14 @@
 
 <p align="center">Performant, flexible and extensible forms with easy to use validation.</p>
 
+<div align="center">
+    <p align="center">
+        <a href="https://react-hook-form.com" title="React Hook Form Input - Simple React forms validation">
+            <img src="https://raw.githubusercontent.com/react-hook-form/react-hook-form-input/master/src/example.gif" alt="React Hook Form video - React custom hook for form validation" width="750px" />
+        </a>
+    </p>
+</div>
+
 ## Why?
 
 <a href="https://github.com/react-hook-form/react-hook-form">React Hook Form</a> embrace uncontrolled components and native inputs, however it's hard to avoid working with external controlled component such as <a href="https://github.com/JedWatson/react-select">React-Select</a>, <a href="https://github.com/ant-design/ant-design">AntD</a> and <a href="https://material-ui.com/">Material-UI</a>. This wrapper component will make your life easier to work with them.
