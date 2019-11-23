@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { HookFormInput } from './index';
+import { RHFInput } from './index';
 
 describe('React Hook Form Input', () => {
   it('should render correctly', () => {
     const setValue = () => {};
-    const register = () => {};
+    const register = () => () => {};
     const { asFragment } = render(
-      <HookFormInput
+      <RHFInput
         setValue={setValue}
         register={register}
         name="test"
-        component={<input />}
+        as={<input />}
       />,
     );
 
@@ -22,12 +22,12 @@ describe('React Hook Form Input', () => {
     const setValue = () => {};
     const register = jest.fn();
     render(
-      <HookFormInput
+      <RHFInput
         setValue={setValue}
         register={register}
         name="test"
         rules={{ required: true }}
-        component={<input />}
+        as={<input />}
       />,
     );
 
@@ -39,13 +39,13 @@ describe('React Hook Form Input', () => {
 
   it('should update internal value when onChange fired', () => {
     const setValue = jest.fn();
-    const register = () => {};
+    const register = () => () => {};
     const { getByPlaceholderText } = render(
-      <HookFormInput
+      <RHFInput
         setValue={setValue}
         register={register}
         name="test"
-        component={<input placeholder="test" />}
+        as={<input placeholder="test" />}
       />,
     );
 

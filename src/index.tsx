@@ -99,7 +99,9 @@ const RHFInput = React.memo(
         { ...rules },
       );
 
-      return (): void => unregister(name);
+      return (): void => {
+        if (unregister) unregister(name);
+      };
     }, [register, inputValue, name, rules]);
 
     return React.cloneElement(as, {
