@@ -100,3 +100,9 @@ Thank goes to all our backers! [[Become a backer](https://opencollective.com/rea
 <a href="https://opencollective.com/react-hook-form#backers">
     <img src="https://opencollective.com/react-hook-form/backers.svg?width=950" />
 </a>
+
+## Credit
+
+- Inspiration goes to <a href="https://github.com/JedWatson">Jed Watson</a> @github <a href="https://github.com/JedWatson/react-select/issues/3855">issue #3855</a>.
+- Shaping better API <a href="https://github.com/JeromeDeLeon">@JeromeDeLeon</a>
+
