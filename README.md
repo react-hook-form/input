@@ -16,7 +16,7 @@ Inspiration and credit goes to <a href="https://github.com/JedWatson">Jed Watson
 
 ## Features
 
-- isolate re-rendering at your component level
+- isolate re-rendering at component level
 - easily integrate with React Hook Form (skip custom register at `useEffect`)
 - enable <a href="https://react-hook-form.com/api#reset">reset</a> API with React Hook Form without external state
 
