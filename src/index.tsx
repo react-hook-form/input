@@ -21,8 +21,7 @@ type ValidationOptions = Partial<{
 
 type Props = {
   setValue: (name: string, value: any, trigger?: boolean) => void;
-  register: (ref: any, rules: ValidationOptions) => void;
-  unregister?: (name: string) => void;
+  register: (ref: any, rules: ValidationOptions) => (name: string) => void;
   name: string;
   as: React.ReactElement<any>;
   type?: string;
@@ -49,7 +48,6 @@ const RHFInput = React.memo(
     onBlur,
     type,
     value,
-    unregister,
     ...rest
   }: Props) => {
     const isCheckbox = type === 'checkbox';
@@ -81,7 +79,7 @@ const RHFInput = React.memo(
     };
 
     React.useEffect(() => {
-      register(
+      const unregister = register(
         Object.defineProperty(
           {
             name,
@@ -101,12 +99,8 @@ const RHFInput = React.memo(
         { ...rules },
       );
 
-      return () => {
-        if (unregister) {
-          unregister(name);
-        }
-      };
-    }, [register, inputValue, name, rules, unregister]);
+      return (): void => unregister(name);
+    }, [register, inputValue, name, rules]);
 
     return React.cloneElement(as, {
       ...rest,

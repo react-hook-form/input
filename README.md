@@ -70,18 +70,17 @@ function App() {
 
 ## API
 
-| Prop         | Type      | Required | Default | Description                                                                                                                           |
-| :----------- | :-------- | :------: | :-----: | :------------------------------------------------------------------------------------------------------------------------------------ |
-| `as`  | Component |    ✓     |         | Component reference eg: `Select` from `react-select`                                                                                  |
-| `setValue`   | Function  |    ✓     |         | React Hook Form <a href="https://react-hook-form.com/api#setValue">setValue</a> function                                              |
-| `register`   | Function  |    ✓     |         | React Hook Form <a href="https://react-hook-form.com/api#register">register</a> function                                              |
-| `name`       | string    |    ✓     |         | Unique name to register the custom input                                                                                 |
-| `mode`       | string    |          | `onSubmit` | <a href="https://react-hook-form.com/api#useForm">Mode</a> option for triggering validation                                                                                                               |
-| `rules`      | Object    |          |         | Validation rules according to <a href="https://react-hook-form.com/api#register">register</a> at React Hook Form                      |
-| `type`       | string    |          |         | Currently support `checkbox` or `input` input type includes: `radio` and `select`                                                     |
-| `value`      | string    |          |         | Value can be applied for `checkbox`                                                                                                   |
-| `unregister` | Function  |          |         | React Hook Form <a href="https://react-hook-form.com/api#unregsiter">unregister</a> function (only apply when component will unmount) |
-| `...rest`    | Object    |          |         | Any props assigned will be pass through to your Input component                                                                       |
+| Prop       | Type      | Required |  Default   | Description                                                                                                      |
+| :--------- | :-------- | :------: | :--------: | :--------------------------------------------------------------------------------------------------------------- |
+| `as`       | Component |    ✓     |            | Component reference eg: `Select` from `react-select`                                                             |
+| `setValue` | Function  |    ✓     |            | React Hook Form <a href="https://react-hook-form.com/api#setValue">setValue</a> function                         |
+| `register` | Function  |    ✓     |            | React Hook Form <a href="https://react-hook-form.com/api#register">register</a> function                         |
+| `name`     | string    |    ✓     |            | Unique name to register the custom input                                                                         |
+| `mode`     | string    |          | `onSubmit` | <a href="https://react-hook-form.com/api#useForm">Mode</a> option for triggering validation                      |
+| `rules`    | Object    |          |            | Validation rules according to <a href="https://react-hook-form.com/api#register">register</a> at React Hook Form |
+| `type`     | string    |          |            | Currently support `checkbox` or `input` input type includes: `radio` and `select`                                |
+| `value`    | string    |          |            | Value can be applied for `checkbox`                                                                              |
+| `...rest`  | Object    |          |            | Any props assigned will be pass through to your Input component                                                  |
 
 ## Contributors
 
@@ -103,4 +102,3 @@ Thank goes to all our backers! [[Become a backer](https://opencollective.com/rea
 
 - Inspiration goes to <a href="https://github.com/JedWatson">Jed Watson</a> @github <a href="https://github.com/JedWatson/react-select/issues/3855">issue #3855</a>.
 - Shaping better API <a href="https://github.com/JeromeDeLeon">@JeromeDeLeon</a>
-
