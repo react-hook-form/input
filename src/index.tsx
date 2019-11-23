@@ -100,7 +100,9 @@ const RHFInput = React.memo(
       );
 
       return (): void => {
-        if (unregister) unregister(name);
+        if (unregister) {
+          unregister(name);
+        }
       };
     }, [register, inputValue, name, rules]);
 
