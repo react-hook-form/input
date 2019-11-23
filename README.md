@@ -33,7 +33,7 @@ Check out this <a href="https://codesandbox.io/s/react-hook-form-hookforminput-r
 ```jsx
 import React from 'react';
 import useForm from 'react-hook-form';
-import { HookFormInput } from 'react-hook-form-input';
+import { RHFInput } from 'react-hook-form-input';
 import Select from 'react-select';
 
 const options = [
@@ -47,7 +47,7 @@ function App() {
 
   return (
     <form onSubmit={handleSubmit(data => console.log(data))}>
-      <HookFormInput
+      <RHFInput
         component={<Select options={options} />}
         rules={{ required: true }}
         name="reactSelect"
@@ -74,7 +74,7 @@ function App() {
 
 | Prop         | Type      | Required | Default | Description                                                                                                                           |
 | :----------- | :-------- | :------: | :-----: | :------------------------------------------------------------------------------------------------------------------------------------ |
-| `component`  | Component |    ✓     |         | Component reference eg: `Select` from `react-select`                                                                                  |
+| `as`  | Component |    ✓     |         | Component reference eg: `Select` from `react-select`                                                                                  |
 | `setValue`   | Function  |    ✓     |         | React Hook Form <a href="https://react-hook-form.com/api#setValue">setValue</a> function                                              |
 | `register`   | Function  |    ✓     |         | React Hook Form <a href="https://react-hook-form.com/api#register">register</a> function                                              |
 | `name`       | string    |    ✓     |         | Unique name to register the custom input                                                                                 |

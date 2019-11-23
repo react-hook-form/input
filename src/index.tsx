@@ -24,7 +24,7 @@ type Props = {
   register: (ref: any, rules: ValidationOptions) => void;
   unregister?: (name: string) => void;
   name: string;
-  component: React.ReactElement<any>;
+  as: React.ReactElement<any>;
   type?: string;
   rules?: ValidationOptions;
   value?: string | boolean;
@@ -37,14 +37,14 @@ function getValue(e: any, { isCheckbox }: { isCheckbox: boolean }) {
   return e.target ? (isCheckbox ? e.target.checked : e.target.value) : e;
 }
 
-const HookFormInput = React.memo(
+const RHFInput = React.memo(
   ({
     setValue,
     name,
     register,
     rules,
     mode = 'onSubmit',
-    component,
+    as,
     onChange,
     onBlur,
     type,
@@ -102,11 +102,13 @@ const HookFormInput = React.memo(
       );
 
       return () => {
-        if (unregister) unregister(name);
+        if (unregister) {
+          unregister(name);
+        }
       };
-    }, [register, inputValue, name, rules]);
+    }, [register, inputValue, name, rules, unregister]);
 
-    return React.cloneElement(component, {
+    return React.cloneElement(as, {
       ...rest,
       onChange: handleChange,
       ...(isOnBlur ? { onBlur: handleBlur } : {}),
@@ -116,4 +118,4 @@ const HookFormInput = React.memo(
   },
 );
 
-export { HookFormInput };
+export { RHFInput };
