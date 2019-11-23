@@ -33,7 +33,7 @@
 
 - Isolate re-rendering at component level
 - Integrate easily with React Hook Form (skip custom register at `useEffect`)
-- Enable <a href="https://react-hook-form.com/api#reset">reset</a> API with React Hook Form without external state
+- Enable <a href="https://react-hook-form.com/api#reset">reset</a> API with Controlled Components without external state
 
 ## Install
 
