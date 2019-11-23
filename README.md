@@ -79,7 +79,6 @@ function App() {
 | `mode`     | string    |          | `onSubmit` | <a href="https://react-hook-form.com/api#useForm">Mode</a> option for triggering validation                      |
 | `rules`    | Object    |          |            | Validation rules according to <a href="https://react-hook-form.com/api#register">register</a> at React Hook Form |
 | `type`     | string    |          |            | Currently support `checkbox` or `input` input type includes: `radio` and `select`                                |
-| `value`    | string    |          |            | Value can be applied for `checkbox`                                                                              |
 | `...rest`  | Object    |          |            | Any props assigned will be pass through to your Input component                                                  |
 
 ## Contributors
