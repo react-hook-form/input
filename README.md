@@ -48,7 +48,7 @@ function App() {
   return (
     <form onSubmit={handleSubmit(data => console.log(data))}>
       <RHFInput
-        component={<Select options={options} />}
+        as={<Select options={options} />}
         rules={{ required: true }}
         name="reactSelect"
         register={register}
