@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFormContext } from 'react-hook-form';
 
 export type ValidateResult = string | boolean | undefined;
 
@@ -38,9 +39,9 @@ function getValue(e: any, { isCheckbox }: { isCheckbox: boolean }) {
 
 const RHFInput = React.memo(
   ({
-    setValue,
+    setValue: setValueFromProp,
+    register: registerFromProp,
     name,
-    register,
     rules,
     mode = 'onSubmit',
     as,
@@ -55,6 +56,10 @@ const RHFInput = React.memo(
     const isOnBlur = mode === 'onBlur';
     const [inputValue, setInputValue] = React.useState(isCheckbox ? false : '');
     const valueRef = React.useRef();
+    const methods = useFormContext();
+    const setValue = methods ? methods.setValue : setValueFromProp;
+    const register = methods ? methods.register : registerFromProp;
+
     const commonTask = (e: any) => {
       const data = getValue(e, { isCheckbox });
       setInputValue(data);
@@ -101,7 +106,7 @@ const RHFInput = React.memo(
 
       return (): void => {
         if (unregister) {
-          unregister(name);
+          unregister(name as any);
         }
       };
     }, [register, inputValue, name, rules]);

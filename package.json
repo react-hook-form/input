@@ -47,7 +47,7 @@
     "ts-jest": "^24.0.2",
     "typescript": "^3.7.2"
   },
-  "peerDependencies": {
+  "dependencies": {
     "react-hook-form": "^3.28.0"
   }
 }
