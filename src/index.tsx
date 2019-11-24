@@ -31,6 +31,8 @@ type Props = {
   onChange?: (value: any) => void;
   onBlur?: (value: any) => void;
   mode?: 'onBlur' | 'onChange' | 'onSubmit';
+  defaultValue?: string;
+  defaultChecked?: boolean;
 };
 
 function getValue(e: any, { isCheckbox }: { isCheckbox: boolean }) {
@@ -49,12 +51,16 @@ const RHFInput = React.memo(
     onBlur,
     type,
     value,
+    defaultValue,
+    defaultChecked,
     ...rest
   }: Props) => {
     const isCheckbox = type === 'checkbox';
     const isOnChange = mode === 'onChange';
     const isOnBlur = mode === 'onBlur';
-    const [inputValue, setInputValue] = React.useState(isCheckbox ? false : '');
+    const [inputValue, setInputValue] = React.useState(
+      isCheckbox ? defaultChecked || false : defaultValue || '',
+    );
     const valueRef = React.useRef();
     const methods = useFormContext();
     const setValue = methods ? methods.setValue : setValueFromProp;
