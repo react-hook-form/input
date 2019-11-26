@@ -1,6 +1,6 @@
 {
   "name": "react-hook-form-input",
-  "version": "1.0.12-beta.1",
+  "version": "1.0.12",
   "description": "Wrapper component for controlled inputs",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
