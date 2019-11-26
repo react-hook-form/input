@@ -58,16 +58,15 @@ const RHFInput = React.memo(
     const isCheckbox = type === 'checkbox';
     const isOnChange = mode === 'onChange';
     const isOnBlur = mode === 'onBlur';
-    const [inputValue, setInputValue] = React.useState(
-      isCheckbox
-        ? defaultChecked === undefined
-          ? false
-          : defaultChecked
-        : defaultValue === undefined
-        ? ''
-        : defaultValue,
-    );
-    const valueRef = React.useRef();
+    const defaultData = isCheckbox
+      ? defaultChecked === undefined
+        ? false
+        : defaultChecked
+      : defaultValue === undefined
+      ? ''
+      : defaultValue;
+    const [inputValue, setInputValue] = React.useState(defaultData);
+    const valueRef = React.useRef(defaultData);
     const methods = useFormContext();
     const setValue = methods ? methods.setValue : setValueFromProp;
     const register = methods ? methods.register : registerFromProp;
