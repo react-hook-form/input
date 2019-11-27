@@ -37,10 +37,7 @@ type Props = {
 };
 
 function getValue(e: any, { isCheckbox }: { isCheckbox: boolean }) {
-  if (e.target) {
-    return e.target ? (isCheckbox ? e.target.checked : e.target.value) : e;
-  }
-  return e.nativeEvent.text;
+  return e.target ? (isCheckbox ? e.target.checked : e.target.value) : e;
 }
 
 const RHFInput = React.memo(
