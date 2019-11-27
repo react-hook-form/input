@@ -123,7 +123,7 @@ const RHFInput = React.memo(
           unregister(name as string);
         }
       };
-    }, [register, unregister, inputValue, name, rules]);
+    }, [register, unregister, name, rules]);
 
     return React.cloneElement(as, {
       ...rest,
