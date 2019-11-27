@@ -37,6 +37,25 @@ describe('React Hook Form Input', () => {
     );
   });
 
+  it('should unregister input when component unmount', () => {
+    const setValue = () => {};
+    const register = jest.fn();
+    const unregister = jest.fn();
+    const {unmount} = render(
+      <RHFInput
+        setValue={setValue}
+        register={register}
+        unregister={unregister}
+        name="test"
+        rules={{ required: true }}
+        as={<input />}
+      />,
+    );
+    expect(unregister).not.toBeCalled();
+    unmount();
+    expect(unregister).toBeCalledWith('test');
+  });
+
   it('should update internal value when onChange fired', () => {
     const setValue = jest.fn();
     const register = () => () => {};

@@ -23,6 +23,7 @@ type ValidationOptions = Partial<{
 type Props = {
   setValue: (name: string, value: any, trigger?: boolean) => void;
   register: (ref: any, rules: ValidationOptions) => (name: string) => void;
+  unregister?: (name: string) => void;
   name: string;
   as: React.ReactElement<any>;
   type?: string;
@@ -43,6 +44,7 @@ const RHFInput = React.memo(
   ({
     setValue: setValueFromProp,
     register: registerFromProp,
+    unregister: unregisterFromProp,
     name,
     rules,
     mode = 'onSubmit',
@@ -70,6 +72,7 @@ const RHFInput = React.memo(
     const methods = useFormContext();
     const setValue = methods ? methods.setValue : setValueFromProp;
     const register = methods ? methods.register : registerFromProp;
+    const unregister = methods ? methods.unregister : unregisterFromProp;
 
     const commonTask = (e: any) => {
       const data = getValue(e, { isCheckbox });
@@ -95,7 +98,7 @@ const RHFInput = React.memo(
     };
 
     React.useEffect(() => {
-      const unregister = register(
+      register(
         Object.defineProperty(
           {
             name,
@@ -117,10 +120,10 @@ const RHFInput = React.memo(
 
       return (): void => {
         if (unregister) {
-          unregister(name as any);
+          unregister(name as string);
         }
       };
-    }, [register, name, rules]);
+    }, [register, unregister, name, rules]);
 
     return React.cloneElement(as, {
       ...rest,
