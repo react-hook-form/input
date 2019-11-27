@@ -37,7 +37,10 @@ type Props = {
 };
 
 function getValue(e: any, { isCheckbox }: { isCheckbox: boolean }) {
-  return e.target ? (isCheckbox ? e.target.checked : e.target.value) : e;
+  if (e.target) {
+    return e.target ? (isCheckbox ? e.target.checked : e.target.value) : e;
+  }
+  return e.nativeEvent.text;
 }
 
 const RHFInput = React.memo(
@@ -122,7 +125,7 @@ const RHFInput = React.memo(
           unregister(name as string);
         }
       };
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [register, unregister, name]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return React.cloneElement(as, {
       ...rest,

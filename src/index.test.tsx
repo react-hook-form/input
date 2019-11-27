@@ -31,10 +31,7 @@ describe('React Hook Form Input', () => {
       />,
     );
 
-    expect(register).toBeCalledWith(
-      { name: 'test' },
-      { required: true },
-    );
+    expect(register).toBeCalledWith({ name: 'test' }, { required: true });
   });
 
   it('should unregister input when component unmount', () => {
@@ -56,12 +53,13 @@ describe('React Hook Form Input', () => {
     expect(unregister).toBeCalledWith('test');
   });
 
-  it('shouldn\'t unregister even if props changed', () => {
+  it("shouldn't unregister even if props changed", () => {
     const unregister = jest.fn();
-    const {rerender} = render(
+    const register = jest.fn();
+    const { rerender } = render(
       <RHFInput
         setValue={() => {}}
-        register={jest.fn()}
+        register={register}
         unregister={unregister}
         name="test"
         rules={{ required: true }}
@@ -71,9 +69,9 @@ describe('React Hook Form Input', () => {
     rerender(
       <RHFInput
         setValue={() => {}}
-        register={jest.fn()}
+        register={register}
         unregister={unregister}
-        name="test 2"
+        name="test"
         rules={{ required: false }}
         as={<input />}
       />,
