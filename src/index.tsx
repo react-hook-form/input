@@ -123,7 +123,7 @@ const RHFInput = React.memo(
           unregister(name as string);
         }
       };
-    }, [register, unregister, name, rules]);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return React.cloneElement(as, {
       ...rest,
