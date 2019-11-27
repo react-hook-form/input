@@ -32,7 +32,7 @@ describe('React Hook Form Input', () => {
     );
 
     expect(register).toBeCalledWith(
-      { name: 'test', type: 'custom' },
+      { name: 'test' },
       { required: true },
     );
   });
@@ -41,7 +41,7 @@ describe('React Hook Form Input', () => {
     const setValue = () => {};
     const register = jest.fn();
     const unregister = jest.fn();
-    const {unmount} = render(
+    const { unmount } = render(
       <RHFInput
         setValue={setValue}
         register={register}
