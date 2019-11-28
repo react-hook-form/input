@@ -45,6 +45,8 @@ Check out this <a href="https://codesandbox.io/s/react-hook-form-hookforminput-r
 
 ## Quickstart
 
+#### React Web
+
 ```jsx
 import React from 'react';
 import useForm from 'react-hook-form';
@@ -54,7 +56,6 @@ import Select from 'react-select';
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
   { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
 ];
 
 function App() {
@@ -69,20 +70,52 @@ function App() {
         register={register}
         setValue={setValue}
       />
-      <button
-        type="button"
-        onClick={() => {
-          reset({
-            reactSelect: '',
-          });
-        }}
-      >
+      <button type="button">
         Reset Form
       </button>
       <button>submit</button>
     </form>
   );
 }
+```
+
+#### React Native
+
+```jsx
+import * as React from 'react';
+import { View, TextInput, Button } from 'react-native';
+import useForm from 'react-hook-form';
+import { RHFInput } from './index';
+
+export default () => {
+  const { register, setValue, handleSubmit } = useForm();
+  const onSubmit = data => console.log(data);
+
+  const onChange = args => {
+    return {
+      value: args[0].nativeEvent.text,
+    };
+  };
+
+  return (
+    <View style={styles.container}>
+      <RHFInput
+        register={register}
+        setValue={setValue}
+        as={<TextInput />}
+        onChangeEvent={onChange}
+        name="firstName"
+      />
+
+      <View style={styles.button}>
+        <Button
+          title="Button"
+          onPress={handleSubmit(onSubmit)}
+        />
+      </View>
+    </View>
+  );
+};
 ```
 
 ## API
