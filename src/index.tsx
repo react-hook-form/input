@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Props, EventFunction } from './types';
 
-function getValue(e: any, { isCheckbox }: { isCheckbox: boolean }) {
-  return e.target ? (isCheckbox ? e.target.checked : e.target.value) : e;
+function getValue(target: any, { isCheckbox }: { isCheckbox: boolean }) {
+  return target ? (isCheckbox ? target.checked : target.value) : target;
 }
 
 const RHFInput = React.memo(
@@ -44,8 +44,8 @@ const RHFInput = React.memo(
     const register = methods ? methods.register : registerFromProp;
     const unregister = methods ? methods.unregister : unregisterFromProp;
 
-    const commonTask = (e: any) => {
-      const data = getValue(e, { isCheckbox });
+    const commonTask = (target: any) => {
+      const data = getValue(target, { isCheckbox });
       setInputValue(data);
       valueRef.current = data;
       return data;
@@ -58,7 +58,7 @@ const RHFInput = React.memo(
     };
 
     const handleChange = (e: any) => {
-      const data = commonTask(e);
+      const data = commonTask(e.target);
       setValue(name, data, isOnChange);
       if (onChange) {
         onChange(e);
@@ -66,7 +66,7 @@ const RHFInput = React.memo(
     };
 
     const handleBlur = (e: any) => {
-      const data = commonTask(e);
+      const data = commonTask(e.target);
       setValue(name, data, isOnBlur);
       if (onBlur) {
         onBlur(e);
@@ -102,12 +102,12 @@ const RHFInput = React.memo(
 
     return React.cloneElement(as, {
       ...rest,
-      ...(onChangeName && onChangeEvent
-        ? { [onChangeName]: eventWrapper(onChangeEvent) }
+      ...(onChangeEvent
+        ? { [onChangeName || 'onChange']: eventWrapper(onChangeEvent) }
         : { onChange: handleChange }),
       ...(isOnBlur
-        ? onBlurName && onBlurEvent
-          ? { [onBlurName]: eventWrapper(onBlurEvent) }
+        ? onBlurEvent
+          ? { [onBlurName || 'onBlur']: eventWrapper(onBlurEvent) }
           : { onBlur: handleBlur }
         : {}),
       value: value || inputValue,

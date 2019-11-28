@@ -4,7 +4,9 @@ export type ValidateResult = string | boolean | undefined;
 
 export type Validate = (data: any) => ValidateResult;
 
-export type ValidationOptionObject<Value> = Value | { value: Value; message: string };
+export type ValidationOptionObject<Value> =
+  | Value
+  | { value: Value; message: string };
 
 export type ValidationOptions = Partial<{
   required: boolean | string;
@@ -19,7 +21,12 @@ export type ValidationOptions = Partial<{
     | { value: Validate | Record<string, Validate>; message: string };
 }>;
 
-export type EventFunction = (args: any) => any;
+export type EventFunction = (
+  args: any,
+) => {
+  value?: any;
+  checked?: boolean;
+};
 
 export type Props = {
   setValue: (name: string, value: any, trigger?: boolean) => void;
