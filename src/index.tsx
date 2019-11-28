@@ -1,43 +1,9 @@
 import * as React from 'react';
 import { useFormContext } from 'react-hook-form';
+import { Props, EventFunction } from './types';
 
-export type ValidateResult = string | boolean | undefined;
-
-export type Validate = (data: any) => ValidateResult;
-
-type ValidationOptionObject<Value> = Value | { value: Value; message: string };
-
-type ValidationOptions = Partial<{
-  required: boolean | string;
-  min: ValidationOptionObject<number | string>;
-  max: ValidationOptionObject<number | string>;
-  maxLength: ValidationOptionObject<number | string>;
-  minLength: ValidationOptionObject<number | string>;
-  pattern: ValidationOptionObject<RegExp>;
-  validate:
-    | Validate
-    | Record<string, Validate>
-    | { value: Validate | Record<string, Validate>; message: string };
-}>;
-
-type Props = {
-  setValue: (name: string, value: any, trigger?: boolean) => void;
-  register: (ref: any, rules: ValidationOptions) => (name: string) => void;
-  unregister?: (name: string) => void;
-  name: string;
-  as: React.ReactElement<any>;
-  type?: string;
-  rules?: ValidationOptions;
-  value?: string | boolean;
-  onChange?: (value: any) => void;
-  onBlur?: (value: any) => void;
-  mode?: 'onBlur' | 'onChange' | 'onSubmit';
-  defaultValue?: string;
-  defaultChecked?: boolean;
-};
-
-function getValue(e: any, { isCheckbox }: { isCheckbox: boolean }) {
-  return e && e.target ? (isCheckbox ? e.target.checked : e.target.value) : e;
+function getValue(target: any, { isCheckbox }: { isCheckbox: boolean }) {
+  return target ? (isCheckbox ? target.checked : target.value) : target;
 }
 
 const RHFInput = React.memo(
@@ -55,6 +21,10 @@ const RHFInput = React.memo(
     value,
     defaultValue,
     defaultChecked,
+    onChangeName,
+    onChangeEvent,
+    onBlurName,
+    onBlurEvent,
     ...rest
   }: Props) => {
     const isCheckbox = type === 'checkbox';
@@ -74,15 +44,21 @@ const RHFInput = React.memo(
     const register = methods ? methods.register : registerFromProp;
     const unregister = methods ? methods.unregister : unregisterFromProp;
 
-    const commonTask = (e: any) => {
-      const data = getValue(e, { isCheckbox });
+    const commonTask = (target: any) => {
+      const data = getValue(target, { isCheckbox });
       setInputValue(data);
       valueRef.current = data;
       return data;
     };
 
+    const eventWrapper = (event: EventFunction) => {
+      return (...arg: any) => {
+        commonTask(event(arg));
+      };
+    };
+
     const handleChange = (e: any) => {
-      const data = commonTask(e);
+      const data = commonTask(e ? e.target : e);
       setValue(name, data, isOnChange);
       if (onChange) {
         onChange(e);
@@ -90,7 +66,7 @@ const RHFInput = React.memo(
     };
 
     const handleBlur = (e: any) => {
-      const data = commonTask(e);
+      const data = commonTask(e ? e.target : e);
       setValue(name, data, isOnBlur);
       if (onBlur) {
         onBlur(e);
@@ -126,8 +102,14 @@ const RHFInput = React.memo(
 
     return React.cloneElement(as, {
       ...rest,
-      onChange: handleChange,
-      ...(isOnBlur ? { onBlur: handleBlur } : {}),
+      ...(onChangeEvent
+        ? { [onChangeName || 'onChange']: eventWrapper(onChangeEvent) }
+        : { onChange: handleChange }),
+      ...(isOnBlur
+        ? onBlurEvent
+          ? { [onBlurName || 'onBlur']: eventWrapper(onBlurEvent) }
+          : { onBlur: handleBlur }
+        : {}),
       value: value || inputValue,
       ...(isCheckbox ? { checked: inputValue } : {}),
     });
