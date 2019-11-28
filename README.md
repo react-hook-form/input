@@ -41,7 +41,7 @@
 
 ## Demo
 
-Check out this <a href="https://codesandbox.io/s/react-hook-form-hookforminput-rzu9s">demo</a>.
+Check out this <a href="https://codesandbox.io/s/react-hook-form-hookforminput-rzu9s">React Web demo</a> or <a href="https://snack.expo.io/@bluebill1049/test-react-hook-form-input">React Native demo</a>.
 
 ## Quickstart
 
