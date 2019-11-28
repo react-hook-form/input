@@ -58,7 +58,7 @@ const RHFInput = React.memo(
     };
 
     const handleChange = (e: any) => {
-      const data = commonTask(e.target);
+      const data = commonTask(e ? e.target : e);
       setValue(name, data, isOnChange);
       if (onChange) {
         onChange(e);
@@ -66,7 +66,7 @@ const RHFInput = React.memo(
     };
 
     const handleBlur = (e: any) => {
-      const data = commonTask(e.target);
+      const data = commonTask(e ? e.target : e);
       setValue(name, data, isOnBlur);
       if (onBlur) {
         onBlur(e);
