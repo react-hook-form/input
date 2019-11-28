@@ -91,11 +91,9 @@ export default () => {
   const { register, setValue, handleSubmit } = useForm();
   const onSubmit = data => console.log(data);
 
-  const onChange = args => {
-    return {
-      value: args[0].nativeEvent.text,
-    };
-  };
+  const onChange = args => ({
+    value: args[0].nativeEvent.text,
+  });
 
   return (
     <View style={styles.container}>
