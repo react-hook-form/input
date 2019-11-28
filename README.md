@@ -107,12 +107,10 @@ export default () => {
         name="firstName"
       />
 
-      <View style={styles.button}>
-        <Button
-          title="Button"
-          onPress={handleSubmit(onSubmit)}
-        />
-      </View>
+      <Button
+        title="Button"
+        onPress={handleSubmit(onSubmit)}
+      />
     </View>
   );
 };
