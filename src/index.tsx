@@ -40,9 +40,9 @@ const RHFInput = React.memo(
     const [inputValue, setInputValue] = React.useState(defaultData);
     const valueRef = React.useRef(defaultData);
     const methods = useFormContext();
-    const setValue = methods ? methods.setValue : setValueFromProp;
-    const register = methods ? methods.register : registerFromProp;
-    const unregister = methods ? methods.unregister : unregisterFromProp;
+    const setValue = setValueFromProp !== undefined ? setValueFromProp : methods.setValue;
+    const register = registerFromProp !== undefined ? registerFromProp : methods.register;
+    const unregister = unregisterFromProp !== undefined ? unregisterFromProp : methods.unregister;
 
     const commonTask = (target: any) => {
       const data = getValue(target, { isCheckbox });
