@@ -101,7 +101,6 @@ const RHFInput = React.memo(
     }, [register, unregister, name]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return React.cloneElement(as, {
-      ...rest,
       ...(onChangeEvent
         ? { [onChangeName || 'onChange']: eventWrapper(onChangeEvent) }
         : { onChange: handleChange }),
@@ -112,6 +111,7 @@ const RHFInput = React.memo(
         : {}),
       value: value || inputValue,
       ...(isCheckbox ? { checked: inputValue } : {}),
+      ...rest,
     });
   },
 );
