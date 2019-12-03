@@ -51,9 +51,15 @@ const RHFInput = React.memo(
       return data;
     };
 
-    const eventWrapper = (event: EventFunction) => {
+    const eventWrapper = (event: EventFunction, eventName: string) => {
       return (...arg: any) => {
-        commonTask(event(arg));
+        const data = commonTask(event(arg));
+        setValue(
+          name,
+          data,
+          (isOnChange && eventName === 'onChange') ||
+            (isOnBlur && eventName === 'onBlur'),
+        );
       };
     };
 
@@ -78,6 +84,7 @@ const RHFInput = React.memo(
         Object.defineProperty(
           {
             name,
+            type,
           },
           'value',
           {
@@ -102,11 +109,16 @@ const RHFInput = React.memo(
 
     return React.cloneElement(as, {
       ...(onChangeEvent
-        ? { [onChangeName || 'onChange']: eventWrapper(onChangeEvent) }
+        ? {
+            [onChangeName || 'onChange']: eventWrapper(
+              onChangeEvent,
+              'onChange',
+            ),
+          }
         : { onChange: handleChange }),
       ...(isOnBlur
         ? onBlurEvent
-          ? { [onBlurName || 'onBlur']: eventWrapper(onBlurEvent) }
+          ? { [onBlurName || 'onBlur']: eventWrapper(onBlurEvent, 'onBlur') }
           : { onBlur: handleBlur }
         : {}),
       value: value || inputValue,
