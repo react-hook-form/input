@@ -40,9 +40,30 @@ const RHFInput = React.memo(
     const [inputValue, setInputValue] = React.useState(defaultData);
     const valueRef = React.useRef(defaultData);
     const methods = useFormContext();
-    const setValue = setValueFromProp !== undefined ? setValueFromProp : methods ? methods.setValue : () => {throw Error("Must provide setValue prop or formContext")};
-    const register = registerFromProp !== undefined ? registerFromProp : methods ? methods.register : () => {throw Error("Must provide register prop or formContext")};
-    const unregister = unregisterFromProp !== undefined ? unregisterFromProp : methods ? methods.unregister : () => {throw Error("Must provide unregister prop or formContext")};
+    const setValue =
+      setValueFromProp !== undefined
+        ? setValueFromProp
+        : methods
+        ? methods.setValue
+        : () => {
+            throw Error('Must provide setValue prop or formContext');
+          };
+    const register =
+      registerFromProp !== undefined
+        ? registerFromProp
+        : methods
+        ? methods.register
+        : () => {
+            throw Error('Must provide register prop or formContext');
+          };
+    const unregister =
+      unregisterFromProp !== undefined
+        ? unregisterFromProp
+        : methods
+        ? methods.unregister
+        : () => {
+            throw Error('Must provide unregister prop or formContext');
+          };
 
     const commonTask = (target: any) => {
       const data = getValue(target, { isCheckbox });

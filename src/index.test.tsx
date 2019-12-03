@@ -6,7 +6,7 @@ describe('React Hook Form Input', () => {
   it('should render correctly', () => {
     const setValue = () => {};
     const register = () => () => {};
-    const unregister = () => {}
+    const unregister = () => {};
     const { asFragment } = render(
       <RHFInput
         setValue={setValue}
@@ -23,7 +23,7 @@ describe('React Hook Form Input', () => {
   it('should register input when component mount', () => {
     const setValue = () => {};
     const register = jest.fn();
-    const unregister = () => {}
+    const unregister = () => {};
     render(
       <RHFInput
         setValue={setValue}
@@ -86,7 +86,7 @@ describe('React Hook Form Input', () => {
   it('should update internal value when onChange fired', () => {
     const setValue = jest.fn();
     const register = () => () => {};
-    const unregister = () => {}
+    const unregister = () => {};
     const { getByPlaceholderText } = render(
       <RHFInput
         setValue={setValue}
