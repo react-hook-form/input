@@ -3,6 +3,9 @@ import { useFormContext } from 'react-hook-form';
 import { Props, EventFunction } from './types';
 
 function getValue(target: any, { isCheckbox }: { isCheckbox: boolean }) {
+  if (Array.isArray(target)) {
+    return target;
+  }
   return target ? (isCheckbox ? target.checked : target.value) : target;
 }
 
@@ -39,31 +42,10 @@ const RHFInput = React.memo(
       : defaultValue;
     const [inputValue, setInputValue] = React.useState(defaultData);
     const valueRef = React.useRef(defaultData);
-    const methods = useFormContext();
-    const setValue =
-      setValueFromProp !== undefined
-        ? setValueFromProp
-        : methods
-        ? methods.setValue
-        : () => {
-            throw Error('Must provide setValue prop or formContext');
-          };
-    const register =
-      registerFromProp !== undefined
-        ? registerFromProp
-        : methods
-        ? methods.register
-        : () => {
-            throw Error('Must provide register prop or formContext');
-          };
-    const unregister =
-      unregisterFromProp !== undefined
-        ? unregisterFromProp
-        : methods
-        ? methods.unregister
-        : () => {
-            throw Error('Must provide unregister prop or formContext');
-          };
+    const methods = useFormContext() || {};
+    const setValue = setValueFromProp || methods.setValue;
+    const register = registerFromProp || methods.register;
+    const unregister = unregisterFromProp || methods.unregister;
 
     const commonTask = (target: any) => {
       const data = getValue(target, { isCheckbox });
@@ -85,7 +67,7 @@ const RHFInput = React.memo(
     };
 
     const handleChange = (e: any) => {
-      const data = commonTask(e ? e.target : e);
+      const data = commonTask(e && e.target ? e.target : e);
       setValue(name, data, isOnChange);
       if (onChange) {
         onChange(e);
@@ -93,7 +75,7 @@ const RHFInput = React.memo(
     };
 
     const handleBlur = (e: any) => {
-      const data = commonTask(e ? e.target : e);
+      const data = commonTask(e && e.target ? e.target : e);
       setValue(name, data, isOnBlur);
       if (onBlur) {
         onBlur(e);
