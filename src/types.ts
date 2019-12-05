@@ -28,12 +28,14 @@ export type EventFunction = (
   checked?: boolean;
 };
 
-export type Props = {
+export type Props<T> = {
+  children?: React.ReactNode;
+  innerProps?: T;
   setValue?: (name: string, value: any, trigger?: boolean) => void;
   register?: (ref: any, rules: ValidationOptions) => (name: string) => void;
   unregister?: (name: string) => void;
   name: string;
-  as: React.ReactElement<any>;
+  as: React.ElementType<any>;
   type?: string;
   rules?: ValidationOptions;
   value?: string | boolean;

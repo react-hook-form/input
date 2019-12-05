@@ -1,3 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`React Hook Form Input should render MUI Checkbox correctly 1`] = `[Function]`;
+
+exports[`React Hook Form Input should render MUI Radio correctly 1`] = `[Function]`;
+
+exports[`React Hook Form Input should render MUI Select correctly 1`] = `[Function]`;
+
+exports[`React Hook Form Input should render MUI Switch correctly 1`] = `[Function]`;
+
+exports[`React Hook Form Input should render MUI TextField correctly 1`] = `[Function]`;
+
 exports[`React Hook Form Input should render correctly 1`] = `[Function]`;
