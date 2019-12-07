@@ -3,7 +3,8 @@ import { useFormContext } from 'react-hook-form';
 import { Props, EventFunction } from './types';
 
 function getValue(target: any, { isCheckbox }: { isCheckbox: boolean }) {
-  if (Array.isArray(target)) {
+  // the following logic is specific for react-select
+  if (Array.isArray(target) || (target.label && target.value)) {
     return target;
   }
   return target ? (isCheckbox ? target.checked : target.value) : target;
@@ -82,18 +83,11 @@ const RHFInput = <T,>({
     }
   };
 
-  React.useEffect(() => {
-    register(
-      Object.defineProperty(
-        {
-          name,
-          type,
-        },
-        'value',
-        {
-          set(data) {
-            setInputValue(data);
-            valueRef.current = data;
+    React.useEffect(() => {
+      register(
+        Object.defineProperty(
+          {
+            name,
           },
           get() {
             return valueRef.current;
