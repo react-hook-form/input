@@ -88,7 +88,6 @@ const RHFInput = ({
       Object.defineProperty(
         {
           name,
-          type,
         },
         'value',
         {
@@ -111,30 +110,29 @@ const RHFInput = ({
     };
   }, [register, unregister, name]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return (
-    <InnerComponent
-      {...{
-        ...innerProps,
-        ...(onChangeEvent
-          ? {
-              [onChangeName || 'onChange']: eventWrapper(
-                onChangeEvent,
-                'onChange',
-              ),
-            }
-          : { onChange: handleChange }),
-        ...(isOnBlur
-          ? onBlurEvent
-            ? {
-                [onBlurName || 'onBlur']: eventWrapper(onBlurEvent, 'onBlur'),
-              }
-            : { onBlur: handleBlur }
-          : {}),
-        value: value || inputValue,
-        ...(isCheckbox ? { checked: inputValue } : {}),
-        ...rest,
-      }}
-    />
+  const props = {
+    ...innerProps,
+    ...(onChangeEvent
+      ? {
+          [onChangeName || 'onChange']: eventWrapper(onChangeEvent, 'onChange'),
+        }
+      : { onChange: handleChange }),
+    ...(isOnBlur
+      ? onBlurEvent
+        ? {
+            [onBlurName || 'onBlur']: eventWrapper(onBlurEvent, 'onBlur'),
+          }
+        : { onBlur: handleBlur }
+      : {}),
+    value: value || inputValue,
+    ...(isCheckbox ? { checked: inputValue } : {}),
+    ...rest,
+  };
+
+  return React.isValidElement(InnerComponent) ? (
+    React.cloneElement(InnerComponent, props)
+  ) : (
+    <InnerComponent {...props} />
   );
 };
 
