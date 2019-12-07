@@ -29,11 +29,13 @@ export type EventFunction = (
 };
 
 export type Props = {
+  children?: React.ReactNode;
+  innerProps?: any;
   setValue?: (name: string, value: any, trigger?: boolean) => void;
   register?: (ref: any, rules: ValidationOptions) => (name: string) => void;
   unregister?: (name: string) => void;
   name: string;
-  as: React.ReactElement<any>;
+  as: React.ElementType<any>;
   type?: string;
   rules?: ValidationOptions;
   value?: string | boolean;

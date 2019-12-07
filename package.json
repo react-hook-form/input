@@ -20,11 +20,13 @@
     "prepublishOnly": "yarn lint && yarn test && yarn run clean && yarn build"
   },
   "devDependencies": {
+    "@material-ui/core": "^4.7.1",
     "@testing-library/react": "^9.3.2",
     "@testing-library/react-hooks": "^3.2.1",
     "@types/jest": "^24.0.23",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.4",
+    "@types/react-select": "^3.0.8",
     "@types/react-test-renderer": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
@@ -40,13 +42,14 @@
     "prettier": "^1.19.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-hook-form": "^3.28.0",
+    "react-select": "^3.0.8",
     "react-test-renderer": "^16.9.0",
     "rollup": "^1.20.3",
     "rollup-plugin-terser": "^5.1.1",
     "rollup-plugin-typescript2": "^0.25.2",
     "ts-jest": "^24.0.2",
-    "typescript": "^3.7.2",
-    "react-hook-form": "^3.28.0"
+    "typescript": "^3.7.2"
   },
   "peerDependencies": {
     "react": "^16.8.0",

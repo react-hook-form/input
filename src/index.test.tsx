@@ -1,8 +1,19 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { RHFInput } from './index';
 import { FormContext } from 'react-hook-form';
 import { FormStateProxy } from 'react-hook-form/dist/types';
+import ReactSelect from 'react-select';
+import {
+  TextField,
+  Checkbox,
+  Select,
+  MenuItem,
+  Switch,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+} from '@material-ui/core';
+import { RHFInput } from './index';
 
 describe('React Hook Form Input', () => {
   it('should render correctly', () => {
@@ -15,11 +26,130 @@ describe('React Hook Form Input', () => {
         register={register}
         unregister={unregister}
         name="test"
-        as={<input />}
+        as="input"
       />,
     );
 
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should render MUI Checkbox correctly', () => {
+    const setValue = () => {};
+    const register = () => () => {};
+    const unregister = () => {};
+    const { asFragment } = render(
+      <RHFInput
+        as={Checkbox}
+        name="Checkbox"
+        type="checkbox"
+        value="test"
+        unregister={unregister}
+        register={register}
+        setValue={setValue}
+      />,
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should render MUI Radio correctly', () => {
+    const setValue = () => {};
+    const register = () => () => {};
+    const unregister = () => {};
+
+    const { asFragment } = render(
+      <RHFInput
+        as={RadioGroup}
+        innerProps={{ 'aria-label': 'gender', name: 'gender1' }}
+        aria-label="gender"
+        name="RadioGroup"
+        register={register}
+        setValue={setValue}
+        unregister={unregister}
+      >
+        <FormControlLabel value="female" control={<Radio />} label="Female" />
+        <FormControlLabel value="male" control={<Radio />} label="Male" />
+      </RHFInput>,
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should render MUI TextField correctly', () => {
+    const setValue = () => {};
+    const register = () => () => {};
+    const unregister = () => {};
+
+    const { asFragment } = render(
+      <RHFInput
+        as={TextField}
+        name="TextField"
+        register={register}
+        setValue={setValue}
+        unregister={unregister}
+      />,
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should render MUI Switch correctly', () => {
+    const setValue = () => {};
+    const register = () => () => {};
+    const unregister = () => {};
+
+    const { asFragment } = render(
+      <RHFInput
+        as={Switch}
+        value="checkedA"
+        name="switch"
+        type="checkbox"
+        register={register}
+        setValue={setValue}
+        unregister={unregister}
+      />,
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should render MUI Select correctly', () => {
+    const setValue = () => {};
+    const register = () => () => {};
+    const unregister = () => {};
+
+    const { asFragment } = render(
+      <RHFInput
+        as={Select}
+        name="Select"
+        register={register}
+        setValue={setValue}
+        unregister={unregister}
+      >
+        <MenuItem value={10}>Ten</MenuItem>
+        <MenuItem value={20}>Twenty</MenuItem>
+        <MenuItem value={30}>Thirty</MenuItem>
+      </RHFInput>,
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should render react-select correctly', () => {
+    const options = [
+      { value: 'chocolate', label: 'Chocolate' },
+      { value: 'strawberry', label: 'Strawberry' },
+      { value: 'vanilla', label: 'Vanilla' },
+    ];
+
+    <RHFInput
+      as={ReactSelect}
+      innerProps={{
+        options,
+        isClearable: true,
+      }}
+      name="ReactSelect"
+    />;
   });
 
   it('should register input when component mount', () => {
@@ -33,7 +163,7 @@ describe('React Hook Form Input', () => {
         unregister={unregister}
         name="test"
         rules={{ required: true }}
-        as={<input />}
+        as="input"
       />,
     );
 
@@ -51,7 +181,7 @@ describe('React Hook Form Input', () => {
         unregister={unregister}
         name="test"
         rules={{ required: true }}
-        as={<input />}
+        as="input"
       />,
     );
     expect(unregister).not.toBeCalled();
@@ -69,7 +199,7 @@ describe('React Hook Form Input', () => {
         unregister={unregister}
         name="test"
         rules={{ required: true }}
-        as={<input />}
+        as="input"
       />,
     );
     rerender(
@@ -79,7 +209,7 @@ describe('React Hook Form Input', () => {
         unregister={unregister}
         name="test"
         rules={{ required: false }}
-        as={<input />}
+        as="input"
       />,
     );
     expect(unregister).not.toBeCalled();
@@ -91,11 +221,12 @@ describe('React Hook Form Input', () => {
     const unregister = () => {};
     const { getByPlaceholderText } = render(
       <RHFInput
+        innerProps={{ placeholder: 'test' }}
         setValue={setValue}
         register={register}
         unregister={unregister}
         name="test"
-        as={<input placeholder="test" />}
+        as="input"
       />,
     );
 
@@ -140,8 +271,9 @@ describe('React Hook Form Input', () => {
     const { getByPlaceholderText } = render(
       <FormContext {...methods}>
         <RHFInput
+          innerProps={{ placeholder: 'test' }}
           name="test"
-          as={<input placeholder="test" />}
+          as="input"
           register={register}
           unregister={unregister}
         />
@@ -189,8 +321,9 @@ describe('React Hook Form Input', () => {
     render(
       <FormContext {...methods}>
         <RHFInput
+          innerProps={{ placeholder: 'test' }}
           name="test"
-          as={<input placeholder="test" />}
+          as="input"
           setValue={setValue}
           rules={{ required: true }}
           unregister={unregister}
@@ -235,8 +368,9 @@ describe('React Hook Form Input', () => {
     const { unmount } = render(
       <FormContext {...methods}>
         <RHFInput
+          innerProps={{ placeholder: 'test' }}
           name="test"
-          as={<input placeholder="test" />}
+          as="input"
           setValue={setValue}
           rules={{ required: true }}
           register={register}
