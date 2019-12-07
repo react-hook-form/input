@@ -151,4 +151,4 @@ Thanks goes to these wonderful people. [[Become a contributor](CONTRIBUTING.md)]
 #### Thanks to 
 
 - Inspiration goes to <a href="https://github.com/JedWatson">Jed Watson</a> @github <a href="https://github.com/JedWatson/react-select/issues/3855">issue #3855</a>.
-- Shaping better API <a href="https://github.com/JeromeDeLeon">@JeromeDeLeon</a>
+- Shaping better API <a href="https://github.com/JeromeDeLeon">Jerome De Leon</a>
