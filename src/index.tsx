@@ -87,7 +87,6 @@ const RHFInput = React.memo(
         Object.defineProperty(
           {
             name,
-            type,
           },
           'value',
           {
