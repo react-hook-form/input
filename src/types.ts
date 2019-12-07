@@ -28,9 +28,9 @@ export type EventFunction = (
   checked?: boolean;
 };
 
-export type Props<T> = {
+export type Props = {
   children?: React.ReactNode;
-  innerProps?: T;
+  innerProps?: any;
   setValue?: (name: string, value: any, trigger?: boolean) => void;
   register?: (ref: any, rules: ValidationOptions) => (name: string) => void;
   unregister?: (name: string) => void;

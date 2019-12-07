@@ -10,7 +10,7 @@ function getValue(target: any, { isCheckbox }: { isCheckbox: boolean }) {
   return target ? (isCheckbox ? target.checked : target.value) : target;
 }
 
-const RHFInput = <T,>({
+const RHFInput = ({
   innerProps,
   setValue: setValueFromProp,
   register: registerFromProp,
@@ -30,7 +30,7 @@ const RHFInput = <T,>({
   onBlurName,
   onBlurEvent,
   ...rest
-}: Props<T>) => {
+}: Props) => {
   const isCheckbox = type === 'checkbox';
   const isOnChange = mode === 'onChange';
   const isOnBlur = mode === 'onBlur';

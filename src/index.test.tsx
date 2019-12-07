@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { FormContext } from 'react-hook-form';
 import { FormStateProxy } from 'react-hook-form/dist/types';
-import ReactSelect, { Props } from 'react-select';
+import ReactSelect from 'react-select';
 import {
   TextField,
   Checkbox,
@@ -12,7 +12,6 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
-  RadioGroupProps,
 } from '@material-ui/core';
 import { RHFInput } from './index';
 
@@ -59,7 +58,7 @@ describe('React Hook Form Input', () => {
     const unregister = () => {};
 
     const { asFragment } = render(
-      <RHFInput<RadioGroupProps>
+      <RHFInput
         as={RadioGroup}
         innerProps={{ 'aria-label': 'gender', name: 'gender1' }}
         aria-label="gender"
@@ -143,7 +142,7 @@ describe('React Hook Form Input', () => {
       { value: 'vanilla', label: 'Vanilla' },
     ];
 
-    <RHFInput<Props>
+    <RHFInput
       as={ReactSelect}
       innerProps={{
         options,
@@ -221,7 +220,7 @@ describe('React Hook Form Input', () => {
     const register = () => () => {};
     const unregister = () => {};
     const { getByPlaceholderText } = render(
-      <RHFInput<React.HTMLAttributes<HTMLInputElement>>
+      <RHFInput
         innerProps={{ placeholder: 'test' }}
         setValue={setValue}
         register={register}
@@ -271,7 +270,7 @@ describe('React Hook Form Input', () => {
 
     const { getByPlaceholderText } = render(
       <FormContext {...methods}>
-        <RHFInput<React.HTMLAttributes<HTMLInputElement>>
+        <RHFInput
           innerProps={{ placeholder: 'test' }}
           name="test"
           as="input"
@@ -321,7 +320,7 @@ describe('React Hook Form Input', () => {
 
     render(
       <FormContext {...methods}>
-        <RHFInput<React.HTMLAttributes<HTMLInputElement>>
+        <RHFInput
           innerProps={{ placeholder: 'test' }}
           name="test"
           as="input"
@@ -368,7 +367,7 @@ describe('React Hook Form Input', () => {
 
     const { unmount } = render(
       <FormContext {...methods}>
-        <RHFInput<React.HTMLAttributes<HTMLInputElement>>
+        <RHFInput
           innerProps={{ placeholder: 'test' }}
           name="test"
           as="input"
