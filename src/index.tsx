@@ -38,8 +38,6 @@ const RHFInput = ({
     ? defaultChecked === undefined
       ? false
       : defaultChecked
-    : defaultValue === undefined
-    ? ''
     : defaultValue;
   const [inputValue, setInputValue] = React.useState(defaultData);
   const valueRef = React.useRef(defaultData);
