@@ -132,14 +132,6 @@ export default () => {
 | `onBlurEvent`   | Function  |          |             | Callback function to return `value` or `checked`. event callback argument may have different signature and this props allow you to customise the value return.                                           |
 | `...rest`       | Object    |          |             | Any props assigned will be pass through to your Input component                                                                                                                          |
 
-## Contributors
-
-Thanks goes to these wonderful people. [[Become a contributor](CONTRIBUTING.md)].
-
-<a href="https://github.com/react-hook-form/react-hook-form/graphs/contributors">
-    <img src="https://opencollective.com/react-hook-form/contributors.svg?width=950" />
-</a>
-
 ## Backers
 
 Thank goes to all our backers! [[Become a backer](https://opencollective.com/react-hook-form#backer)].
@@ -148,7 +140,15 @@ Thank goes to all our backers! [[Become a backer](https://opencollective.com/rea
     <img src="https://opencollective.com/react-hook-form/backers.svg?width=950" />
 </a>
 
-## Credit
+## Contributors
+
+Thanks goes to these wonderful people. [[Become a contributor](CONTRIBUTING.md)].
+
+<a href="https://github.com/react-hook-form/react-hook-form/graphs/contributors">
+    <img src="https://opencollective.com/react-hook-form/contributors.svg?width=950" />
+</a>
+
+#### Thanks to 
 
 - Inspiration goes to <a href="https://github.com/JedWatson">Jed Watson</a> @github <a href="https://github.com/JedWatson/react-select/issues/3855">issue #3855</a>.
 - Shaping better API <a href="https://github.com/JeromeDeLeon">@JeromeDeLeon</a>
