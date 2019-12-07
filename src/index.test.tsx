@@ -30,7 +30,7 @@ describe('React Hook Form Input', () => {
       />,
     );
 
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render MUI Checkbox correctly', () => {
@@ -49,7 +49,7 @@ describe('React Hook Form Input', () => {
       />,
     );
 
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render MUI Radio correctly', () => {
@@ -72,7 +72,7 @@ describe('React Hook Form Input', () => {
       </RHFInput>,
     );
 
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render MUI TextField correctly', () => {
@@ -90,7 +90,7 @@ describe('React Hook Form Input', () => {
       />,
     );
 
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render MUI Switch correctly', () => {
@@ -110,7 +110,7 @@ describe('React Hook Form Input', () => {
       />,
     );
 
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render MUI Select correctly', () => {
@@ -132,7 +132,7 @@ describe('React Hook Form Input', () => {
       </RHFInput>,
     );
 
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render react-select correctly', () => {
