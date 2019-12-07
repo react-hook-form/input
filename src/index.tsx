@@ -83,11 +83,18 @@ const RHFInput = <T,>({
     }
   };
 
-    React.useEffect(() => {
-      register(
-        Object.defineProperty(
-          {
-            name,
+  React.useEffect(() => {
+    register(
+      Object.defineProperty(
+        {
+          name,
+          type,
+        },
+        'value',
+        {
+          set(data) {
+            setInputValue(data);
+            valueRef.current = data;
           },
           get() {
             return valueRef.current;
