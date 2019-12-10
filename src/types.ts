@@ -35,7 +35,11 @@ export type Props = {
   register?: (ref: any, rules: ValidationOptions) => (name: string) => void;
   unregister?: (name: string) => void;
   name: string;
-  as: React.ElementType<any>;
+  as:
+    | React.ElementType<any>
+    | React.FunctionComponent<any>
+    | JSX.Element
+    | string;
   type?: string;
   rules?: ValidationOptions;
   value?: string | boolean;
