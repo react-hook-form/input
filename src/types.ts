@@ -38,8 +38,8 @@ export type Props = {
   as:
     | React.ElementType<any>
     | React.FunctionComponent<any>
-    | JSX.Element
-    | string;
+    | string
+    | any;
   type?: string;
   rules?: ValidationOptions;
   value?: string | boolean;
