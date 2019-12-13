@@ -93,7 +93,7 @@ describe('React Hook Form Input', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('should render MUI Switch correctly', () => {
+  it.skip('should render MUI Switch correctly', () => {
     const setValue = () => {};
     const register = () => () => {};
     const unregister = () => {};
