@@ -201,7 +201,7 @@ exports[`React Hook Form Input should render MUI Switch correctly 1`] = `
         <input
           class="PrivateSwitchBase-input-176 MuiSwitch-input"
           type="checkbox"
-          value="checkedA"
+          value="10"
         />
         <span
           class="MuiSwitch-thumb"

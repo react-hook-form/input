@@ -101,7 +101,7 @@ describe('React Hook Form Input', () => {
     const { asFragment } = render(
       <RHFInput
         as={Switch}
-        value="checkedA"
+        value="10"
         name="switch"
         type="checkbox"
         register={register}
