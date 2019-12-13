@@ -122,7 +122,7 @@ const RHFInput = ({
           }
         : { onBlur: handleBlur }
       : {}),
-    value: value || inputValue,
+    value: value || inputValue || '',
     ...(isCheckbox ? { checked: inputValue } : {}),
     ...rest,
   };
