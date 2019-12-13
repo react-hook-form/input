@@ -7,7 +7,14 @@ function getValue(target: any, { isCheckbox }: { isCheckbox: boolean }) {
   if (target && (Array.isArray(target) || (target.label && target.value))) {
     return target;
   }
-  return target ? (isCheckbox ? target.checked : target.value) : target;
+  console.log(target.value);
+  return target
+    ? isCheckbox
+      ? target.checked
+      : target.value
+      ? target.value
+      : target
+    : target;
 }
 
 const RHFInput = ({
