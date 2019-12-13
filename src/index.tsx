@@ -2,17 +2,20 @@ import * as React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Props, EventFunction } from './types';
 
+const isUndefined = (val: unknown): val is undefined => val === undefined;
+
 function getValue(target: any, { isCheckbox }: { isCheckbox: boolean }) {
   // the following logic is specific for react-select
   if (target && (Array.isArray(target) || (target.label && target.value))) {
     return target;
   }
+
   return target
     ? isCheckbox
       ? target.checked
+      : isUndefined(target.value)
+      ? target
       : target.value
-      ? target.value
-      : target
     : target;
 }
 
@@ -41,7 +44,7 @@ const RHFInput = ({
   const isOnChange = mode === 'onChange';
   const isOnBlur = mode === 'onBlur';
   const defaultData = isCheckbox
-    ? defaultChecked === undefined
+    ? isUndefined(defaultChecked)
       ? false
       : defaultChecked
     : defaultValue;
