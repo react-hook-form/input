@@ -7,7 +7,6 @@ function getValue(target: any, { isCheckbox }: { isCheckbox: boolean }) {
   if (target && (Array.isArray(target) || (target.label && target.value))) {
     return target;
   }
-  console.log(target.value);
   return target
     ? isCheckbox
       ? target.checked
