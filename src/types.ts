@@ -21,12 +21,14 @@ export type ValidationOptions = Partial<{
     | { value: Validate | Record<string, Validate>; message: string };
 }>;
 
-export type EventFunction = (
-  args: any,
-) => {
+type EventFunctionResult = {
   value?: any;
   checked?: boolean;
 };
+
+export type EventFunction = (
+  args: any,
+) => EventFunctionResult | Promise<EventFunctionResult>;
 
 export type Props = {
   children?: React.ReactNode;

@@ -63,8 +63,8 @@ const RHFInput = ({
   };
 
   const eventWrapper = (event: EventFunction, eventName: string) => {
-    return (...arg: any) => {
-      const data = commonTask(event(arg));
+    return async (...arg: any) => {
+      const data = commonTask(await event(arg));
       setValue(
         name,
         data,
