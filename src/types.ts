@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export type ValidateResult = string | boolean | undefined;
 
-export type Validate = (data: any) => ValidateResult;
+export type Validate = (data: any) => ValidateResult | Promise<ValidateResult>;
 
 export type ValidationOptionObject<Value> =
   | Value
