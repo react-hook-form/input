@@ -95,6 +95,7 @@ const RHFInput = ({
       Object.defineProperty(
         {
           name,
+          type: isCheckbox ? 'checkbox' : undefined,
         },
         'value',
         {

@@ -170,6 +170,28 @@ describe('React Hook Form Input', () => {
     expect(register).toBeCalledWith({ name: 'test' }, { required: true });
   });
 
+  it('should register checkbox with correct type', () => {
+    const setValue = () => {};
+    const register = jest.fn();
+    const unregister = () => {};
+    render(
+      <RHFInput
+        setValue={setValue}
+        register={register}
+        unregister={unregister}
+        type="checkbox"
+        name="test"
+        rules={{ required: true }}
+        as="input"
+      />,
+    );
+
+    expect(register).toBeCalledWith(
+      { name: 'test', type: 'checkbox' },
+      { required: true },
+    );
+  });
+
   it('should unregister input when component unmount', () => {
     const setValue = () => {};
     const register = jest.fn();
