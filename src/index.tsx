@@ -12,7 +12,9 @@ function getValue(target: any, { isCheckbox }: { isCheckbox: boolean }) {
 
   return target
     ? isCheckbox
-      ? target.checked
+      ? isUndefined(target.checked)
+        ? target.checked
+        : target
       : isUndefined(target.value)
       ? target
       : target.value
