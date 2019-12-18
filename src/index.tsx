@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, isUndefined, get, isCheckbox } from 'react-hook-form';
 import { Props, EventFunction } from './types';
-
-const isUndefined = (val: unknown): val is undefined => val === undefined;
 
 function getValue(target: any, { isCheckbox }: { isCheckbox: boolean }) {
   // the following logic is specific for react-select
@@ -24,7 +22,6 @@ function getValue(target: any, { isCheckbox }: { isCheckbox: boolean }) {
 const RHFInput = ({
   name,
   rules,
-  mode = 'onSubmit',
   as: InnerComponent,
   onChange,
   onBlur,
@@ -37,19 +34,23 @@ const RHFInput = ({
   control,
   ...rest
 }: Props) => {
-  const isCheckbox = type === 'checkbox';
-  const isOnChange = mode === 'onChange';
-  const isOnBlur = mode === 'onBlur';
-  const [inputValue, setInputValue] = React.useState(value);
-  const valueRef = React.useRef(value);
+  const isCheckboxInput = isCheckbox(type);
+  // const formState = control.formState;
+  const defaultValue = control.defaultValues[name];
+  const [inputState, setInputState] = React.useState(defaultValue || value);
+  const valueRef = React.useRef(defaultValue || value);
   const methods = useFormContext() || {};
   const setValue = control.setValue || methods.setValue;
   const register = control.register || methods.register;
   const unregister = control.unregister || methods.unregister;
 
+  const shouldValidate = () => {
+    return !!get(control.errors, name);
+  };
+
   const commonTask = (target: any) => {
-    const data = getValue(target, { isCheckbox });
-    setInputValue(data);
+    const data = getValue(target, { isCheckbox: isCheckboxInput });
+    setInputState(data);
     valueRef.current = data;
     return data;
   };
@@ -60,15 +61,15 @@ const RHFInput = ({
       setValue(
         name,
         data,
-        (isOnChange && eventName === 'onChange') ||
-          (isOnBlur && eventName === 'onBlur'),
+        (control.mode.isOnChange && eventName === 'onChange') ||
+          (control.mode.isOnBlur && eventName === 'onBlur'),
       );
     };
   };
 
   const handleChange = (e: any) => {
     const data = commonTask(e && e.target ? e.target : e);
-    setValue(name, data, isOnChange);
+    setValue(name, data, shouldValidate());
     if (onChange) {
       onChange(e);
     }
@@ -76,7 +77,7 @@ const RHFInput = ({
 
   const handleBlur = (e: any) => {
     const data = commonTask(e && e.target ? e.target : e);
-    setValue(name, data, isOnBlur);
+    setValue(name, data, shouldValidate());
     if (onBlur) {
       onBlur(e);
     }
@@ -91,7 +92,7 @@ const RHFInput = ({
         'value',
         {
           set(data) {
-            setInputValue(data);
+            setInputState(data);
             valueRef.current = data;
           },
           get() {
@@ -115,15 +116,15 @@ const RHFInput = ({
           [onChangeName || 'onChange']: eventWrapper(onChangeEvent, 'onChange'),
         }
       : { onChange: handleChange }),
-    ...(isOnBlur
+    ...(control.mode.isOnBlur || control.reValidateMode.isReValidateOnBlur
       ? onBlurEvent
         ? {
             [onBlurName || 'onBlur']: eventWrapper(onBlurEvent, 'onBlur'),
           }
         : { onBlur: handleBlur }
       : {}),
-    value: inputValue || value || '',
-    ...(isCheckbox ? { checked: inputValue } : {}),
+    value: inputState || value || '',
+    ...(isCheckboxInput ? { checked: inputState } : {}),
     ...rest,
   };
 
