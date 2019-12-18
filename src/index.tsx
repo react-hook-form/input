@@ -22,10 +22,6 @@ function getValue(target: any, { isCheckbox }: { isCheckbox: boolean }) {
 }
 
 const RHFInput = ({
-  innerProps,
-  setValue: setValueFromProp,
-  register: registerFromProp,
-  unregister: unregisterFromProp,
   name,
   rules,
   mode = 'onSubmit',
@@ -34,28 +30,22 @@ const RHFInput = ({
   onBlur,
   type,
   value,
-  defaultValue,
-  defaultChecked,
   onChangeName,
   onChangeEvent,
   onBlurName,
   onBlurEvent,
+  control,
   ...rest
 }: Props) => {
   const isCheckbox = type === 'checkbox';
   const isOnChange = mode === 'onChange';
   const isOnBlur = mode === 'onBlur';
-  const defaultData = isCheckbox
-    ? isUndefined(defaultChecked)
-      ? false
-      : defaultChecked
-    : defaultValue;
-  const [inputValue, setInputValue] = React.useState(defaultData);
-  const valueRef = React.useRef(defaultData);
+  const [inputValue, setInputValue] = React.useState(value);
+  const valueRef = React.useRef(value);
   const methods = useFormContext() || {};
-  const setValue = setValueFromProp || methods.setValue;
-  const register = registerFromProp || methods.register;
-  const unregister = unregisterFromProp || methods.unregister;
+  const setValue = control.setValue || methods.setValue;
+  const register = control.register || methods.register;
+  const unregister = control.unregister || methods.unregister;
 
   const commonTask = (target: any) => {
     const data = getValue(target, { isCheckbox });
@@ -114,13 +104,12 @@ const RHFInput = ({
 
     return (): void => {
       if (unregister) {
-        unregister(name as string);
+        unregister(name);
       }
     };
   }, [register, unregister, name]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const props = {
-    ...innerProps,
     ...(onChangeEvent
       ? {
           [onChangeName || 'onChange']: eventWrapper(onChangeEvent, 'onChange'),

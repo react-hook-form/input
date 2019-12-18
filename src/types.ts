@@ -33,9 +33,6 @@ export type EventFunction = (
 export type Props = {
   children?: React.ReactNode;
   innerProps?: any;
-  setValue?: (name: string, value: any, trigger?: boolean) => void;
-  register?: (ref: any, rules: ValidationOptions) => (name: string) => void;
-  unregister?: (name: string) => void;
   name: string;
   as: React.ElementType<any> | React.FunctionComponent<any> | string | any;
   type?: string;
@@ -50,4 +47,5 @@ export type Props = {
   onChangeEvent?: EventFunction;
   onBlurName?: string;
   onBlurEvent?: EventFunction;
+  control: any;
 };
