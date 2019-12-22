@@ -25,6 +25,8 @@
     </p>
 </div>
 
+⚠️ This component is a part of React Hook Form V4, and renamed to <a href="http://react-hook-form.com/api#Controller">Controller</a> with much simpler API.
+
 ## Why?
 
 <a href="https://github.com/react-hook-form/react-hook-form">React Hook Form</a> embrace uncontrolled components and native inputs, however it's hard to avoid working with external controlled component such as <a href="https://github.com/JedWatson/react-select">React-Select</a>, <a href="https://github.com/ant-design/ant-design">AntD</a> and <a href="https://material-ui.com/">Material-UI</a>. This wrapper component will make your life easier to work with them.
@@ -70,9 +72,7 @@ function App() {
         register={register}
         setValue={setValue}
       />
-      <button type="button">
-        Reset Form
-      </button>
+      <button type="button">Reset Form</button>
       <button>submit</button>
     </form>
   );
@@ -105,10 +105,7 @@ export default () => {
         name="firstName"
       />
 
-      <Button
-        title="Button"
-        onPress={handleSubmit(onSubmit)}
-      />
+      <Button title="Button" onPress={handleSubmit(onSubmit)} />
     </View>
   );
 };
@@ -126,10 +123,10 @@ export default () => {
 | `mode`          | string    |          | `onSubmit`  | <a href="https://react-hook-form.com/api#useForm">Mode</a> option for triggering validation                                                                                              |
 | `rules`         | Object    |          | `undefined` | Validation rules according to <a href="https://react-hook-form.com/api#register">register</a> at React Hook Form                                                                         |
 | `type`          | string    |          |   `input`   | Currently support `checkbox` or `input` input type includes: `radio` and `select`                                                                                                        |
-| `onChangeName`  | string    |          |             | This prop allow you to target that specific event name, eg: when `onChange` event is named `onTextChange`                                                                           |
-| `onChangeEvent` | Function  |          |             | Callback function to return `value` or `checked`. event callback argument may have different signature and this props allow you to customise the value return.                                           |
-| `onBlurName`    | string    |          |             | This prop allow you to target that specific event name, eg: when `onBlur` event is named `onTextBlur`                                                                               |
-| `onBlurEvent`   | Function  |          |             | Callback function to return `value` or `checked`. event callback argument may have different signature and this props allow you to customise the value return.                                           |
+| `onChangeName`  | string    |          |             | This prop allow you to target that specific event name, eg: when `onChange` event is named `onTextChange`                                                                                |
+| `onChangeEvent` | Function  |          |             | Callback function to return `value` or `checked`. event callback argument may have different signature and this props allow you to customise the value return.                           |
+| `onBlurName`    | string    |          |             | This prop allow you to target that specific event name, eg: when `onBlur` event is named `onTextBlur`                                                                                    |
+| `onBlurEvent`   | Function  |          |             | Callback function to return `value` or `checked`. event callback argument may have different signature and this props allow you to customise the value return.                           |
 | `...rest`       | Object    |          |             | Any props assigned will be pass through to your Input component                                                                                                                          |
 
 ## Backers
@@ -148,7 +145,7 @@ Thanks goes to these wonderful people. [[Become a contributor](CONTRIBUTING.md)]
     <img src="https://opencollective.com/react-hook-form/contributors.svg?width=950" />
 </a>
 
-#### Thanks to 
+#### Thanks to
 
 - Inspiration goes to <a href="https://github.com/JedWatson">Jed Watson</a> @github <a href="https://github.com/JedWatson/react-select/issues/3855">issue #3855</a>.
 - Shaping better API <a href="https://github.com/JeromeDeLeon">Jerome De Leon</a>
