@@ -25,7 +25,7 @@
     </p>
 </div>
 
-#### ⚠️ This component is a part of React Hook Form V4, and renamed to <a href="http://react-hook-form.com/api#Controller">Controller</a> with much simpler API.
+### ⚠️ This component will be a part of React Hook Form V4 (Currently in RC), and renamed to Controller and with much simpler API.
 
 ## Why?
 
