@@ -1,3 +1,5 @@
+## ⚠️ This component is a part of React Hook Form V4, and renamed to <a href="https://react-hook-form.com/api/#Controller">Controller with much simpler API</a>.
+
 <div align="center">
     <p align="center">
         <a href="https://react-hook-form.com" title="React Hook Form - Simple React forms validation">
@@ -24,8 +26,6 @@
         </a>
     </p>
 </div>
-
-### ⚠️ This component will be a part of React Hook Form V4 (Currently in RC), and renamed to Controller and with much simpler API.
 
 ## Why?
 
