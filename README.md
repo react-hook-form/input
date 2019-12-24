@@ -1,4 +1,4 @@
-<div align="center"><h2>📣 UPDATE</h2>
+<div align="center"><h1>📣 UPDATE</h1>
 
 This component is now a part of React Hook Form V4, and renamed to <a href="https://react-hook-form.com/api/#Controller">Controller with much simpler API</a>.
 
