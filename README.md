@@ -1,6 +1,8 @@
-## ⚠️ Update
+<div align="center">## ⚠️ Update</div>
 
-This component is a part of React Hook Form V4, and renamed to <a href="https://react-hook-form.com/api/#Controller">Controller with much simpler API</a>.
+This component is now a part of React Hook Form V4, and renamed to <a href="https://react-hook-form.com/api/#Controller">Controller with much simpler API</a>.
+
+
 
 <div align="center">
     <p align="center">
