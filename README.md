@@ -91,7 +91,7 @@ function App() {
 import * as React from 'react';
 import { View, TextInput, Button } from 'react-native';
 import useForm from 'react-hook-form';
-import { RHFInput } from './index';
+import { RHFInput } from 'react-hook-form-input';
 
 export default () => {
   const { register, setValue, handleSubmit } = useForm();
