@@ -28,7 +28,7 @@ This component is now a part of React Hook Form V4, and renamed to <a href="http
 <div align="center">
     <p align="center">
         <a href="https://react-hook-form.com" title="React Hook Form Input - Simple React forms validation">
-            <img src="https://raw.githubusercontent.com/react-hook-form/react-hook-form-input/master/src/docs/example.gif" alt="React Hook Form video - React custom hook for form validation" width="750px" />
+            <img src="https://raw.githubusercontent.com/react-hook-form/react-hook-form-input/master/src/example.gif" alt="React Hook Form video - React custom hook for form validation" width="750px" />
         </a>
     </p>
 </div>
